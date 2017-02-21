@@ -1,0 +1,2 @@
+# lib
+Stencila component library
