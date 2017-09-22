@@ -1,0 +1,20 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name>cos</name>
+  <title>Cosine</title>
+  <params>
+  	<param name="value" type="number"/>
+  </params>
+  <implems>
+    <implem language="js">
+      <code>Math.cos</code>
+    </implem>
+    <implem language="py">
+      <requires>math</requires>
+      <code>math.cos</code>
+    </implem>
+    <implem language="r">
+      <code>cos</code>
+    </implem>
+  </implems>
+</function>

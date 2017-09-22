@@ -1,34 +1,50 @@
-## `stencila/lib` : Stencila component library
+## `stencila/lib` : Stencila Standard Library
 
-[![Chat](https://badges.gitter.im/stencila/stencila.svg)](https://gitter.im/stencila/stencila)
+This the Stencila Standard Library, a collection of functions that are built in to the Mini language. It is to Stencila what...
 
-This repository is the Stencila component library. It contains components (i.e. documents, sheets) that you might find useful in composing your own data driven content. Think of it as a big box of Lego blocks for building data driven documents! (Only, because were just getting started it's a very small box at present :smile:)
+- the (Python Standard Library)[https://docs.python.org/3/library/index.html] is to Python
+- the (R Base Package)[https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html] is to R
+- the (Julia Standard Library)[https://docs.julialang.org/en/latest/stdlib/base] is to Julia
 
-### Install
-
-You don't need to install anything, each component is downloaded on demand as you use them (see below). 
-
-### Use
-
-Whenever you use the `lib` scheme for an address, Stencila will attempt to download the component from here. For example, here is an example of an `include` directive within a Stencila Markdown document,
-
-```
-< lib://plots/scatter/vega-lite.md@0.1 (data=cars, x='horsepower', y='mpg')
-```
-
-That will fetch version `0.1` of the file [`plots/scatterplot/vega-lite.md`](plots/scatterplot/vega-lite.md) - a simple Stencila Document for creating a scatterplot - from this repository, set it's variables `data`, `x` and `y` to the specified values, execute the embedded code to generate the scatteplot and intert it into the including document.
-
-Note that because the `lib` address schem is the default you could also write the above as:
-
-```
-< plots/scatter/vega-lite.md@0.1 (data=cars, x='horsepower', y='mpg')
-```
-
-### Discuss
-
-We love feedback. Create a [new issue](https://github.com/stencila/js/issues/new), add to [existing issues](https://github.com/stencila/js/issues) or [chat](https://gitter.im/stencila/stencila) with members of the community.
-
+To make contributions easier this is a separate repo from the other Stencila repos. Function implementations are tested and compiled here to be used in the core [`stencila/stencila`](https://github.com/stencila/stencila) repo and the language package repos e.g. [`stencila/r`](https://github.com/stencila/r).
 
 ### Develop
 
-Want to add a new component to the library or help fix an existing one? Great! To get started, read our contributor [code of conduct](CONDUCT.md), then just send us a pull request or [get in touch](https://gitter.im/stencila/stencila).
+#### Javascript
+
+To test and compile all functions for Javascript:
+
+```
+npm install
+node make.js
+```
+
+This will produce:
+
+- `build/func.js` : A dictionary of XML `Function` definitions to be used dynamically in `stencila/stencila`
+- `build/lib.js` : A Javascript module of `Function` implementations
+
+#### Python
+
+To test and compile all functions for Python:
+
+```
+pip install -r requirements.txt
+python make.py
+```
+
+This will produce:
+
+- `build/lib.py` : A Python module of `Function` implementations which can be included in `stencila/py`
+
+#### R
+
+To test and compile all functions for R:
+
+```
+Rscript make.r
+```
+
+This will produce:
+
+- `build/lib.js` : A R script of `Function` implementations which can be included in `stencila/r`
