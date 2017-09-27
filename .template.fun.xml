@@ -1,0 +1,43 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name></name>
+  <title></title>
+  <summary></summary>
+  <description></description>
+  <relateds>
+    <related></related>
+  </relateds>
+  <params>
+    <param name="" type="">
+      <description></description>
+      <default type=""></default>
+    </param>
+  </params>
+  <return type="">
+    <description></description>
+  </return>
+  <implems>
+    <implem language="">
+      <types>
+        <type type=""/>
+      </types>
+      <code></code>
+    </implem>
+  </implems>
+  <examples>
+    <example>
+      <description></description>
+      <usage></usage>
+      <result type=""></result>
+    </example>
+  </examples>
+  <tests>
+    <test>
+      <description></description>
+      <args>
+        <arg type=""></arg>
+      </args>
+      <result type=""></result>
+    </test>
+  </tests>
+</function>

@@ -1,7 +1,6 @@
 {
   "name": "stencila-lib",
   "version": "0.28.0",
-  "main": "make.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stencila/lib.git"
@@ -12,7 +11,7 @@
     "url": "https://github.com/stencila/lib/issues"
   },
   "homepage": "https://github.com/stencila/lib#readme",
-  "dependencies": {
+  "devDependencies": {
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
     "xmldom": "^0.1.27",
