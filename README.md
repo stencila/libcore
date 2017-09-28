@@ -1,16 +1,14 @@
-## `stencila/lib` : Stencila Standard Library
+## `stencila/mini-core` : core Mini functions
 
-This the Stencila Standard Library, a collection of functions that are built in to the Mini language. It is to Stencila what...
+This the Mini Core Library, a library of functions that are built in to Stencila's [Mini language](https://github.com/stencila/mini). It is to Mini what [Excel functions](https://support.office.com/en-us/article/Excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188) are to Excel, the [Python Standard Library](https://docs.python.org/3/library/index.html) is to Python, the [R Base Package](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html) is to R, etc, etc.
 
-- the [Python Standard Library](https://docs.python.org/3/library/index.html) is to Python
-- the [R Base Package](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html) is to R
-- the [Julia Standard Library](https://docs.julialang.org/en/latest/stdlib/base) is to Julia
+Mini is intentionally simple. Instead of trying to be a complete programming language it being a "glue" between other languages. Mini functions can be implemented in a variety of languages. This allows functions to be implemented using the best language for the job. And when a function is implemented in multiple languages, this approach allows for the optimization of function calls based on implementation speed and data location.
 
 To make contributions easier this is a separate repo from the other Stencila repos. Function implementations are tested and compiled here to be used in the core [`stencila/stencila`](https://github.com/stencila/stencila) repo and the language package repos e.g. [`stencila/r`](https://github.com/stencila/r).
 
 ### Organisation
 
-Each function is defined in a `.fun.xml` with implementations able to be defined in sibling source files (e.g. `sum.fun.xml` and `sum_array.js`). 
+Each function is defined in a `.fun.xml` with implementations able to be defined in sibling source files (e.g. `sum.fun.xml` and `sum.js`). 
 
 This standard library of Mini functions uses a single namespace. However, to make navigation in this repo a little easier, functions are grouped by broad category:
 
