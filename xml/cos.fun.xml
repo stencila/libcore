@@ -12,9 +12,7 @@
     <implem language="py">
       <code>math.cos</code>
     </implem>
-    <implem language="r">
-      <code>base::cos</code>
-    </implem>
+    <implem language="r"/>
   </implems>
   <tests>
     <test>

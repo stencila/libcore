@@ -7,12 +7,7 @@
     </param>
   </params>
   <implems>
-    <implem language="py">
-      <code>def _(*args):
-    numpy.std(*args)</code>
-    </implem>
-    <implem language="r">
-      <code>stats::sd</code>
-    </implem>
+    <implem language="py"/>
+    <implem language="r"/>
   </implems>
 </function>

@@ -19,9 +19,7 @@
     <description>The Pearson correlation between x and y</description>
   </return>
   <implems>
-    <implem language="r">
-      <code>function(x, y) stats::cor(x, y, method='pearson')</code>
-    </implem>
+    <implem language="r" />
   </implems>
   <examples>
     <example>
