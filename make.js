@@ -1,7 +1,6 @@
 const fs = require('fs')
 const glob = require('glob')
 const mkdirp = require('mkdirp')
-//const stencila = require('stencila')
 const xmldom = require('xmldom')
 const xpath = require('xpath.js')
 const zlib = require('zlib')
@@ -18,6 +17,10 @@ mkdirp('build/js', function (err) {
 
   // The compiled module of JavaScript Function implementations
   let lib = fs.createWriteStream('build/js/lib.js')
+
+  // The compiled set of tests
+  let tests = fs.createWriteStream('build/js/tests.js')
+  tests.write('const lib = require("lib")\nconst test = require("tape")\n\ntest("all", function(assert) {\n\n')
 
   // For each function...
   glob('**/*.fun.xml', function (err, files) {
@@ -37,16 +40,28 @@ mkdirp('build/js', function (err) {
         if (names[name]) throw new Error(`Function name already used: "${name}"`)
         else names[name] = true
 
-        // Load the document into memory
-        //const func = stencila.importFunction(xml)
-          
+        // Get parameter types for the signature
+        paramTypes = xpath(doc, '/function/params/param/@type').map(function (attr) {return attr.value})
+
         // Extract any Javascript implementations for the compiled module
         xpath(doc, '/function/implems/implem[@language="js"]').forEach(function (implem) {
-          const types = xpath(implem, './types/type/@type')
-          const signat = ([name].concat(types)).join('_')
+          let types = xpath(implem, './types/type/@type').map(function (attr) {return attr.value})
+          if (!types.length) types = paramTypes
+          const signat = ([name].concat(types)).join('_').replace('[', '_').replace(']', '')
           const code = xpath(implem, './code/text()')[0].data
 
           lib.write(`var ${signat} = (${code})\n\n`)
+        })
+
+        // Create any tests
+        xpath(doc, '/function/tests/test').forEach(function (test) {
+          const args = xpath(test, './args/arg').map(function (arg) {
+            let json = xpath(arg, './text()')[0].data
+            return json
+          })
+          const result = xpath(test, './result/text()')[0].data
+
+          tests.write(`assert.deepEqual(lib.${name}(${args.join(',')}),${result})\n\n`)
         })
         
         // Write a compacted version of XML to the definitions file
@@ -58,6 +73,7 @@ mkdirp('build/js', function (err) {
 
   process.on('exit', function() {
     vfs.write('}\n')
+    tests.write('\n})\n')
   })
 
 })

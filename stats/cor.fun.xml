@@ -31,12 +31,5 @@
     </example>
   </examples>
   <tests>
-    <test>
-      <description></description>
-      <args>
-        <arg type=""></arg>
-      </args>
-      <result type=""></result>
-    </test>
   </tests>
 </function>

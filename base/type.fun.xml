@@ -13,7 +13,7 @@
     <description>The type name for the value</description>
   </return>
   <implems>
-    <implem language="">
+    <implem language="js">
       <types>
         <type type="boolean"/>
       </types>
@@ -24,17 +24,17 @@
     <example>
       <description>Get the type of an integer literal</description>
       <usage>type(42)</usage>
-      <result type="string">integer</result>
+      <result type="string">"integer"</result>
     </example>
     <example>
       <description>Get the type of a one-dimensional array of Sheet cells</description>
       <usage>type(A1:A10)</usage>
-      <result type="string">array[string]</result>
+      <result type="string">"array[string]"</result>
     </example>
     <example>
       <description>Get the type of a two-dimensional array of Sheet cells</description>
       <usage>type(A1:D5)</usage>
-      <result type="string">matrix[number]</result>
+      <result type="string">"matrix[number]"</result>
     </example>
   </examples>
   <tests>
@@ -43,7 +43,7 @@
       <args>
         <arg type="boolean">true</arg>
       </args>
-      <result type="string">boolean</result>
+      <result type="string">"boolean"</result>
     </test>
   </tests>
 </function>

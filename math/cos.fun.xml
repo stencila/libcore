@@ -16,4 +16,12 @@
       <code>base::cos</code>
     </implem>
   </implems>
+  <tests>
+    <test>
+      <args>
+        <arg type="number">0</arg>
+      </args>
+      <result type="number">1</result>
+    </test>
+  </tests>
 </function>
