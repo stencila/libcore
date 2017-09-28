@@ -6,7 +6,7 @@ const xmldom = require('xmldom')
 const xpath = require('xpath.js')
 const zlib = require('zlib')
 
-mkdirp('build', function (err) {
+mkdirp('build/js', function (err) {
   if (err) throw err
 
   // For checking that the same function name is not used twice
@@ -17,7 +17,7 @@ mkdirp('build', function (err) {
   vfs.write('window.STENCILA_LIB_FUNCTIONS = {\n')
 
   // The compiled module of JavaScript Function implementations
-  let lib = fs.createWriteStream('build/lib.js')
+  let lib = fs.createWriteStream('build/js/lib.js')
 
   // For each function...
   glob('**/*.fun.xml', function (err, files) {
@@ -43,7 +43,7 @@ mkdirp('build', function (err) {
         // Extract any Javascript implementations for the compiled module
         xpath(doc, '/function/implems/implem[@language="js"]').forEach(function (implem) {
           const types = xpath(implem, './types/type/@type')
-          const signat = (['mini', name].concat(types)).join('_')
+          const signat = ([name].concat(types)).join('_')
           const code = xpath(implem, './code/text()')[0].data
 
           lib.write(`var ${signat} = (${code})\n\n`)

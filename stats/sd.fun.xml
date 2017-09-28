@@ -1,19 +1,18 @@
 <!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
 <function>
-  <name>cos</name>
-  <title>Cosine</title>
+  <name>sd</name>
   <params>
-  	<param name="value" type="number"/>
+    <param name="x" type="array[number]">
+      <description></description>
+    </param>
   </params>
   <implems>
-    <implem language="js">
-      <code>Math.cos</code>
-    </implem>
     <implem language="py">
-      <code>math.cos</code>
+      <code>def _(*args):
+    numpy.std(*args)</code>
     </implem>
     <implem language="r">
-      <code>base::cos</code>
+      <code>stats::sd</code>
     </implem>
   </implems>
 </function>

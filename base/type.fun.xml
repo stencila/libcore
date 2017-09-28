@@ -1,0 +1,49 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name>type</name>
+  <title>Type</title>
+  <summary>Get the type name of a value</summary>
+  <description>A base function that returns the type name e.g. "number" of a value</description>
+  <params>
+    <param name="value" type="any">
+      <description>The value for which the type is wanted</description>
+    </param>
+  </params>
+  <return type="string">
+    <description>The type name for the value</description>
+  </return>
+  <implems>
+    <implem language="">
+      <types>
+        <type type="boolean"/>
+      </types>
+      <code>function(value){ return "boolean" }</code>
+    </implem>
+  </implems>
+  <examples>
+    <example>
+      <description>Get the type of an integer literal</description>
+      <usage>type(42)</usage>
+      <result type="string">integer</result>
+    </example>
+    <example>
+      <description>Get the type of a one-dimensional array of Sheet cells</description>
+      <usage>type(A1:A10)</usage>
+      <result type="string">array[string]</result>
+    </example>
+    <example>
+      <description>Get the type of a two-dimensional array of Sheet cells</description>
+      <usage>type(A1:D5)</usage>
+      <result type="string">matrix[number]</result>
+    </example>
+  </examples>
+  <tests>
+    <test>
+      <description></description>
+      <args>
+        <arg type="boolean">true</arg>
+      </args>
+      <result type="string">boolean</result>
+    </test>
+  </tests>
+</function>
