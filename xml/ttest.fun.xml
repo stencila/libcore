@@ -1,0 +1,58 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name>ttest</name>
+  <title>Student's t-Test</title>
+  <summary>One-sample and paired Student's t-Test on arrays of numbers</summary>
+  <description></description>
+  <relateds>
+    <related></related>
+  </relateds>
+  <params>
+    <param name="x" type="array[number]">
+      <description></description>
+    </param>
+    <param name="y" type="array[number]">
+      <description></description>
+      <default type="null"/>
+    </param>
+    <param name="mu" type="string">
+      <description>The hypothesized true mean under the null hypothesis.</description>
+      <default type="number">0</default>
+    </param>
+    <param name="tails" type="integer">
+      <description>Whether the alternative hypothesis is that the mean of x (or difference between x and y) is larger than mu (1, i.e. "one-sided greater than"), smaller than mu (-1, i.e. "one-sided less than") or equal to mu (0, i.e. "two-sided").</description>
+      <default type="string">"two-sided"</default>
+    </param>
+    <param name="paired" type="boolean">
+      <description>Perform a paired t-test?</description>
+      <default type="boolean">false</default>
+    </param>
+    <param name="alpha" type="number">
+      <description>Number in the interval [0,1] giving the significance level of the hypothesis test.</description>
+      <default type="number">0.5</default>
+    </param>
+  </params>
+  <return type="object">
+    <description>An object of class "ttest"</description>
+  </return>
+  <implems>
+    <implem language="js"/>
+    <implem language="r"/>
+  </implems>
+  <examples>
+    <example>
+      <description>Perform a one sided, </description>
+      <usage>ttest(x, y, tails=-1)</usage>
+      <result type="object"></result>
+    </example>
+  </examples>
+  <tests>
+    <test>
+      <description></description>
+      <args>
+        <arg type=""></arg>
+      </args>
+      <result type=""></result>
+    </test>
+  </tests>
+</function>
