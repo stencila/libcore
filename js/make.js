@@ -5,15 +5,34 @@ let { DefaultDOMElement } = require('substance')
 // a library instead of single functions
 let fs = require('fs')
 
+const LIB_NAME = 'stencila-mini-core'
+const LIB_XML = 'build/stencila-mini-core.xml'
+const LIB_JS = 'build/stencila-mini-core.js'
+const LIB_CJS = 'build/stencila-mini-core.cjs.js'
+
+const LIB_XML_TEMPLATE = `
+<!DOCTYPE function PUBLIC "StencilaFunctionLibrary 1.0" "StencilaFunctionLibrary.dtd">
+<library name="${LIB_NAME}">
+FUNCTIONS
+</library>
+`
+// PRELIMINARY: packaging everything into a JSON file
+const LIB_XML_JS = 'build/stencila-mini-core.xml.js'
+
 b.task('libxml', () => {
   _bundleLibraryXML()
 })
 
 b.task('libjs', () => {
   b.js('./src/index.js', {
-    dest: './build/minicore.js',
-    format: 'umd',
-    moduleName: 'minicore',
+    targets: [{
+      dest: LIB_JS,
+      format: 'umd',
+      moduleName: 'stencilaMiniCore',
+    }, {
+      dest: LIB_CJS,
+      format: 'cjs'
+    }],
     external: ['jstat', '@stdlib/stdlib', 'd3'],
     globals: {
       'jstat': 'jStat',
@@ -24,27 +43,13 @@ b.task('libjs', () => {
   })
 })
 
-
-b.task('bundle', ['libxml', 'libjs'], () => {
-  _bundle()
+b.task('clean', () => {
+  b.rm('build')
 })
 
-b.task('default', ['bundle'])
+b.task('bundle', ['libxml', 'libjs'])
 
-
-
-const LIB_NAME = 'core'
-const LIB_XML = 'build/minicore.xml'
-const LIB_JS = 'build/minicore.js'
-
-const LIB_XML_TEMPLATE = `
-<!DOCTYPE function PUBLIC "StencilaFunctionLibrary 1.0" "StencilaFunctionLibrary.dtd">
-<library name="${LIB_NAME}">
-FUNCTIONS
-</library>
-`
-// PRELIMINARY: packaging everything into a JSON file
-const OUT = 'build/minicore.vfs.js'
+b.task('default', ['clean', 'bundle'])
 
 // pull all function XML files into one library XML file
 function _bundleLibraryXML() {
@@ -59,26 +64,9 @@ function _bundleLibraryXML() {
         let fun = doc.find('function')
         funs.push(fun.serialize())
       })
-      b.writeSync(LIB_XML, LIB_XML_TEMPLATE.replace('FUNCTIONS', funs.join('\n')), 'utf8')
-    }
-  })
-}
-
-function _bundle() {
-  b.custom('Creating library XML...', {
-    src: [LIB_XML, LIB_JS],
-    dest: OUT,
-    execute() {
-      let lib = {}
-      ;[LIB_XML, LIB_JS].forEach((f) => {
-        let content = fs.readFileSync(f, 'utf-8')
-        if (f === LIB_XML) {
-          lib.xml = content
-        } else if (f === LIB_JS) {
-          lib.js = content
-        }
-      })
-      b.writeSync(OUT, 'window.MINI_CORE_LIBRARY = ' + JSON.stringify(lib, 0, 2), 'utf8')
+      let xmlStr = LIB_XML_TEMPLATE.replace('FUNCTIONS', funs.join('\n'))
+      b.writeSync(LIB_XML, xmlStr, 'utf8')
+      b.writeSync(LIB_XML_JS, 'window.STENCILA_MINI_CORE_LIBRARY = ' + JSON.stringify(xmlStr), 'utf8')
     }
   })
 }
