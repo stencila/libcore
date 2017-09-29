@@ -33,7 +33,7 @@
     "jstat": "^1.7.0"
   },
   "scripts": {
-    "postinstall": "browserify -s tape -o build/tape.umd.js ./node_modules/tape",
+    "postinstall": "if [ ! -d \"build\" ]; then mkdir build; fi && browserify -s tape -o build/tape.umd.js ./node_modules/tape",
     "build": "rollup -c rollup-build.js",
     "test": "rollup -c rollup-test-cjs.js && tape build/test.cjs.js | tap-spec",
     "test-browser": "rollup -c rollup-test-umd.js",
