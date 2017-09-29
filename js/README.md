@@ -1,4 +1,4 @@
-## Mini Core Library functions implemented in R
+## Mini Core Library functions implemented in Javascript
 
 ### Install
 
