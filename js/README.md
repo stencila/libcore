@@ -47,14 +47,14 @@ You can try out functions in the browser developer console by building the distr
 npm run build
 ```
 
-then open `test/index.html`.
+then open `index.html`.
 
 ### Check
 
-Check that the Javascript functions the you have implemented match the XML definitions and bundle the XML definitions:
+Check that the Javascript functions the you have implemented match the XML definitions:
 
 ```bash
-npm check
+npm run check
 ```
 
-This will produce `build/func.js` : A dictionary of XML `Function` definitions to be loaded into `stencila/stencila` for function documentation, reflection (e.g. function call tips) and dispatching. Currently, this file contains the entire XML file for each function.
+This will also produce `build/func.js` : A dictionary of XML `Function` definitions to be loaded into `stencila/stencila` for function documentation, reflection (e.g. function call tips) and dispatching. Currently, this file contains the entire XML file for each function.
