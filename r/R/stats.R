@@ -9,4 +9,12 @@ cov_arraynumber_arraynumber <- stats::cov
 
 sd_arraynumber <- stats::sd
 
+ttest_arraynumber_arraynumber_object <- function(x, y, options) {
+  result <- t.test(x, y, paired = options$paired)
+  list(
+  	_class = 't-test-result',
+  	
+  )
+}
+
 var_arraynumber <- stats::var
