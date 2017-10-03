@@ -1,14 +1,14 @@
 let b = require('substance-bundler')
+let fs = require('fs')
+let cp = require('child_process')
 let { DefaultDOMElement } = require('substance')
 
-// EXPERIMENTAL bundling for the proposed approach exposing
-// a library instead of single functions
-let fs = require('fs')
-
-const LIB_NAME = 'stencila-mini-core'
-const LIB_XML = 'build/stencila-mini-core.xml'
-const LIB_JS = 'build/stencila-mini-core.js'
-const LIB_CJS = 'build/stencila-mini-core.cjs.js'
+const LIB_NAME = 'stencila-libcore'
+const LIB_XML = `build/${LIB_NAME}.xml`
+const LIB_JS = `build/${LIB_NAME}.js`
+const LIB_CJS = `build/${LIB_NAME}.cjs.js`
+const LIB_TEST_JS = 'tmp/test.umd.js'
+const LIB_TEST_CJS = 'tmp/test.cjs.js'
 
 const LIB_XML_TEMPLATE = `
 <!DOCTYPE function PUBLIC "StencilaFunctionLibrary 1.0" "StencilaFunctionLibrary.dtd">
@@ -16,43 +16,23 @@ const LIB_XML_TEMPLATE = `
 FUNCTIONS
 </library>
 `
-// PRELIMINARY: packaging everything into a JSON file
-const LIB_XML_JS = 'build/stencila-mini-core.xml.js'
+const EXTERNALS = ['jstat', '@stdlib/stdlib', 'd3']
+const GLOBALS = {
+  'jstat': 'jStat',
+  '@stdlib/stdlib': 'stdlib',
+  'd3': 'd3'
+}
 
-b.task('libxml', () => {
-  _bundleLibraryXML()
-})
-
-b.task('libjs', () => {
-  b.js('./src/index.js', {
-    targets: [{
-      dest: LIB_JS,
-      format: 'umd',
-      moduleName: 'stencilaMiniCore',
-    }, {
-      dest: LIB_CJS,
-      format: 'cjs'
-    }],
-    external: ['jstat', '@stdlib/stdlib', 'd3'],
-    globals: {
-      'jstat': 'jStat',
-      '@stdlib/stdlib': 'stdlib',
-      'd3': 'd3'
-    },
-    json: true
-  })
-})
+b.task('default', ['clean', 'build'])
 
 b.task('clean', () => {
   b.rm('build')
+  b.rm('tmp')
 })
 
-b.task('bundle', ['libxml', 'libjs'])
+b.task('build', ['xml', 'lib'])
 
-b.task('default', ['clean', 'bundle'])
-
-// pull all function XML files into one library XML file
-function _bundleLibraryXML() {
+b.task('xml', () => {
   b.custom('Creating library XML...', {
     src: '../xml/*.fun.xml',
     dest: LIB_XML,
@@ -66,7 +46,81 @@ function _bundleLibraryXML() {
       })
       let xmlStr = LIB_XML_TEMPLATE.replace('FUNCTIONS', funs.join('\n'))
       b.writeSync(LIB_XML, xmlStr, 'utf8')
-      b.writeSync(LIB_XML_JS, 'window.STENCILA_MINI_CORE_LIBRARY = ' + JSON.stringify(xmlStr), 'utf8')
+      b.writeSync(LIB_XML+'.js', 'window.STENCILA_LIBCORE = ' + JSON.stringify(xmlStr), 'utf8')
     }
   })
-}
+})
+
+b.task('lib', () => {
+  b.js('./src/index.js', {
+    targets: [{
+      dest: LIB_JS,
+      format: 'umd',
+      moduleName: 'stencilaLibCore',
+    }, {
+      dest: LIB_CJS,
+      format: 'cjs'
+    }],
+    external: EXTERNALS,
+    globals: GLOBALS,
+    json: true
+  })
+})
+
+b.task('test', () => {
+  b.js('./test/index.js', {
+    target: {
+      dest: LIB_TEST_CJS,
+      format: 'cjs'
+    },
+    external: EXTERNALS.concat(['tape']),
+    // ignore: ['d3'],
+    json: true
+  })
+  b.custom('Running tests...', {
+    execute: () => {
+      return new Promise((resolve, reject) => {
+        // execute the bundle and process the output using tap-spec
+        const testFile = require.resolve('./tmp/test.cjs.js')
+        const tapSpecFile = require.resolve('tap-spec/bin/cmd.js')
+        let test = cp.fork(testFile, {
+          stdio: ['ignore', 'pipe', 2, 'ipc']
+        })
+        let tapeSpec = cp.fork(tapSpecFile, {
+          stdio: ['pipe', 1, 2, 'ipc']
+        })
+        test.on('error', (error) => {
+          console.error(error)
+          reject()
+        })
+        tapeSpec.on('close', () => {
+          resolve()
+        })
+        test.stdout.pipe(tapeSpec.stdin)
+      })
+    }
+  })
+})
+
+b.task('test:browser', () => {
+  if (!fs.existsSync('./tmp/tape.umd.js')) {
+    b.browserify('./node_modules/tape', {
+      dest: 'tmp/tape.umd.js',
+      browserify: {
+        standalone: 'tape'
+      }
+    })
+  }
+  b.js('./test/index.js', {
+    target: {
+      dest: LIB_TEST_JS,
+      format: 'umd',
+      moduleName: 'tests',
+    },
+    external: EXTERNALS.concat(['tape']),
+    globals: Object.assign({}, GLOBALS, {
+      'tape': 'tape'
+    }),
+    json: true
+  })
+})

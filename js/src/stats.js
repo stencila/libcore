@@ -26,7 +26,8 @@ export function sum(x) {
 }
 
 export function ttest(x, y, mu, tails, paired, alpha) {
-  const implem = stdlib.math.stats.ttest
+  // FIXME: this seems to be inconsistent
+  const implem = (stdlib.math.stats || stdlib.math.statistics).ttest
   const options = {
     mu: mu || 0,
     alternative: ['less', 'two-sided', 'greater'][(tails || 0) + 1],
