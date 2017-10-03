@@ -25,6 +25,7 @@
     "jstat": "^1.7.0"
   },
   "scripts": {
+    "prepublish": "node make",
     "build": "node make",
     "test": "node make test",
     "test-browser": "node make test:browser"
