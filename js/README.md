@@ -1,4 +1,4 @@
-## Mini Core Library functions implemented in Javascript
+## Stencila Core Library implemented in Javascript
 
 ### Install
 

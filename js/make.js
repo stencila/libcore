@@ -3,10 +3,10 @@ let fs = require('fs')
 let cp = require('child_process')
 let { DefaultDOMElement } = require('substance')
 
-const LIB_NAME = 'stencila-mini-core'
-const LIB_XML = 'build/stencila-mini-core.xml'
-const LIB_JS = 'build/stencila-mini-core.js'
-const LIB_CJS = 'build/stencila-mini-core.cjs.js'
+const LIB_NAME = 'stencila-libcore'
+const LIB_XML = `build/${LIB_NAME}.xml`
+const LIB_JS = `build/${LIB_NAME}.js`
+const LIB_CJS = `build/${LIB_NAME}.cjs.js`
 const LIB_TEST_JS = 'tmp/test.umd.js'
 const LIB_TEST_CJS = 'tmp/test.cjs.js'
 
@@ -16,9 +16,6 @@ const LIB_XML_TEMPLATE = `
 FUNCTIONS
 </library>
 `
-// PRELIMINARY: package everything into a JSON file
-const LIB_XML_JS = 'build/stencila-mini-core.xml.js'
-
 const EXTERNALS = ['jstat', '@stdlib/stdlib', 'd3']
 const GLOBALS = {
   'jstat': 'jStat',
@@ -49,7 +46,7 @@ b.task('xml', () => {
       })
       let xmlStr = LIB_XML_TEMPLATE.replace('FUNCTIONS', funs.join('\n'))
       b.writeSync(LIB_XML, xmlStr, 'utf8')
-      b.writeSync(LIB_XML_JS, 'window.STENCILA_MINI_CORE_LIBRARY = ' + JSON.stringify(xmlStr), 'utf8')
+      b.writeSync(LIB_XML+'.js', 'window.STENCILA_MINI_CORE_LIBRARY = ' + JSON.stringify(xmlStr), 'utf8')
     }
   })
 })
