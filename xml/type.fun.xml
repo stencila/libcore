@@ -13,12 +13,7 @@
     <description>The type name for the value</description>
   </return>
   <implems>
-    <implem language="js">
-      <types>
-        <type type="boolean"/>
-      </types>
-      <code>function(value){ return "boolean" }</code>
-    </implem>
+    <implem language="js" />
   </implems>
   <examples>
     <example>

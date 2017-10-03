@@ -1,0 +1,12 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name>csv</name>
+  <params>
+    <param name="data" type="string"/>
+  </params>
+  <implems>
+    <implem language="js" />
+  </implems>
+  <tests>
+  </tests>
+</function>

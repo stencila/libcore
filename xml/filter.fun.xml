@@ -1,0 +1,13 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name>filter</name>
+  <params>
+    <param name="value" type="table"/>
+    <param name="clause" type="string"/>
+  </params>
+  <implems>
+    <implem language="js" />
+  </implems>
+  <tests>
+  </tests>
+</function>
