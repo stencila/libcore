@@ -1,17 +1,23 @@
-import { type as _type } from './value'
-
-/**
- * Get the type code for a value
- *
- * Exposes the internal `type` function so that uses can inspect the
- * type of a function call or expression
- *
- * @param {whatever} value - Value you want a type for
- * @return {string} - Type of value
- */
 function type (value) {
-  return _type(value)
+  let type = typeof value
+
+  if (value === null) {
+    return 'null'
+  } else if (type === 'boolean') {
+    return 'boolean'
+  } else if (type === 'number') {
+    let isInteger = false
+    if (value.isInteger) isInteger = value.isInteger()
+    else isInteger = (value % 1) === 0
+    return isInteger ? 'integer' : 'number'
+  } else if (type === 'string') {
+    return 'string'
+  } else if (type === 'object') {
+    if (value.constructor === Array) return 'array'
+    else return 'object'
+  } else {
+    return 'unknown'
+  }
 }
-type.pars = ['value']
 
 export default type
