@@ -1,15 +1,6 @@
 import { default as jStat } from 'jstat'
 import { default as stdlib } from '@stdlib/stdlib'
 
-// Aliases to reduce typing and allow for better minification
-// ATTENTION: this introduces a dependency to stdlib during loading time
-// This can cause problems with cyclic dependencies, as well
-// as with loading order
-// I.e. stdlib must be loaded before mini-core, and stdlib must not
-// depend on mini-core
-// TODO: we should discuss if we want to avoid this in function libraries
-// const slstats = stdlib.math.statistics || stdlib.math.stats
-
 export function max(x) {
   return jStat.max(x)
 }
@@ -35,17 +26,17 @@ export function sum(x) {
 }
 
 export function ttest(x, y, mu, tails, paired, alpha) {
-  const slstats = stdlib.math.statistics || stdlib.math.stats
+  const implem = stdlib.math.stats.ttest
   const options = {
     mu: mu || 0,
     alternative: ['less', 'two-sided', 'greater'][(tails || 0) + 1],
     alpha: alpha || 0.05,
   }
   let result
-  if (paired) result = slstats.ttest(x, y, options)
+  if (paired) result = implem(x, y, options)
   else {
-    if (y) result = slstats.ttest(x, Object.assign(options, { mu: mean(y) + options.mu }))
-    else result = slstats.ttest(x, options)
+    if (y) result = implem(x, Object.assign(options, { mu: mean(y) + options.mu }))
+    else result = implem(x, options)
   }
   return {
     _class: 'ttest',

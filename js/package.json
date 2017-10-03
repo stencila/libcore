@@ -27,7 +27,7 @@
     "tape": "^4.8.0"
   },
   "dependencies": {
-    "@stdlib/stdlib": "0.0.25",
+    "@stdlib/stdlib": "0.0.26",
     "jstat": "^1.7.0"
   },
   "scripts": {
