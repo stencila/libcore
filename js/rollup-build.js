@@ -6,7 +6,7 @@ export default {
   name: 'minicore',
   input: 'src/index.js',
   output: {
-    file: 'build/minicore.min.js',
+    file: 'build/stencila-mini-core.min.js',
     format: 'umd'
   },
   plugins: [
