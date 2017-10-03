@@ -46,7 +46,7 @@ b.task('xml', () => {
       })
       let xmlStr = LIB_XML_TEMPLATE.replace('FUNCTIONS', funs.join('\n'))
       b.writeSync(LIB_XML, xmlStr, 'utf8')
-      b.writeSync(LIB_XML+'.js', 'window.STENCILA_MINI_CORE_LIBRARY = ' + JSON.stringify(xmlStr), 'utf8')
+      b.writeSync(LIB_XML+'.js', 'window.STENCILA_LIBCORE = ' + JSON.stringify(xmlStr), 'utf8')
     }
   })
 })
@@ -56,7 +56,7 @@ b.task('lib', () => {
     targets: [{
       dest: LIB_JS,
       format: 'umd',
-      moduleName: 'stencilaMiniCore',
+      moduleName: 'stencilaLibCore',
     }, {
       dest: LIB_CJS,
       format: 'cjs'
@@ -102,7 +102,7 @@ b.task('test', () => {
   })
 })
 
-b.task('test:browser', ['tape:umd'], () => {
+b.task('test:browser', () => {
   if (!fs.existsSync('./tmp/tape.umd.js')) {
     b.browserify('./node_modules/tape', {
       dest: 'tmp/tape.umd.js',
