@@ -17,8 +17,14 @@ To test your function implementation, create a new test file in the `tests/testt
 Install some useful R packages for package development and testing, if you don't already have them,
 
 ```r
-install.packages(c('devtools', 'roxygen2', testthat', 'covr'))
+install.packages(c('devtools', 'roxygen2', 'lintr', 'testthat', 'covr'))
 ```
+
+Check for lint,
+
+```bash
+lintr::lint_package()
+``
 
 Then run all the tests,
 

@@ -12,9 +12,10 @@ addons:
       - r-base-dev
 
 install:
-  - mkdir -p ~/R && Rscript -e 'install.packages(c("testthat", "covr"), lib="~/R", repo="http://cloud.r-project.org/")'
+  - mkdir -p ~/R && Rscript -e 'install.packages(c("lintr", "testthat", "covr"), lib="~/R", repo="http://cloud.r-project.org/")'
 
 script:
+  - cd r && Rscript -e 'lintr::lint_package()'
   - R CMD check --no-manual r
 
 after_success:

@@ -1,1 +1,3 @@
-cor <- stats::cor
+cor <- {
+  stats::cor
+}
