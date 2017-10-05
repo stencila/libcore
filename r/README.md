@@ -2,7 +2,7 @@
 
 ### Create
 
-Each function needs an XML file in the `../xml` folder. If necessary, create a new function using [`../xml/.fun.xml`] as a template. 
+See the [`meta`](../meta) folder for which functions are the highet priority for implementation. Each function needs an XML file in the `../xml` folder. If necessary, create a new function using `../xml/.fun.xml` as a template. 
 
 ### Implement
 
