@@ -1,12 +1,18 @@
 language: generic
 
+env:
+  - R_LIBS_USER=~/R
+
 addons:
   apt:
     packages:
       - r-base
 
+install:
+  - mkdir -p ~/R
+
 script:
-  - cd r && make setup && make test
+  - cd r && sudo make setup && make test
 
 after_success:
   - Rscript -e 'covr::codecov()'
