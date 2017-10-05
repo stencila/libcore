@@ -9,12 +9,13 @@ addons:
       - sourceline: 'deb https://cran.rstudio.com/bin/linux/ubuntu trusty/'
     packages:
       - r-base
+      - r-base-dev
 
 install:
   - mkdir -p ~/R && Rscript -e 'install.packages(c("testthat", "covr"), lib="~/R", repo="http://cloud.r-project.org/")'
 
 script:
-  - cd r && R CMD check .
+  - R CMD check --no-manual r
 
 after_success:
   - cd r && Rscript -e 'covr::codecov()'
