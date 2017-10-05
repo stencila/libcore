@@ -23,4 +23,4 @@ script:
   - R CMD check --no-manual r
 
 after_success:
-  - Rscript -e 'covr::codecov("r")'
+  - Rscript -e 'covr::codecov("r", relative_path=FALSE)'
