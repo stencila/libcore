@@ -11,7 +11,7 @@ addons:
       - r-base
 
 install:
-  - mkdir -p ~/R && Rscript -e 'install.packages(c("testthat", "covr"))'
+  - mkdir -p ~/R && Rscript -e 'install.packages(c("testthat", "covr"), lib="~/R", repo="http://cloud.r-project.org/")'
 
 script:
   - cd r && R CMD check .
