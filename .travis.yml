@@ -19,8 +19,8 @@ install:
   - mkdir -p ~/R && Rscript -e 'install.packages(c("lintr", "testthat", "covr"), lib="~/R", repo="http://cloud.r-project.org/")'
 
 script:
-  - cd r && Rscript -e 'lintr::lint_package()'
-  - cd r && R CMD check --no-manual .
+  - Rscript -e 'lintr::lint_package("r")' 
+  - R CMD check --no-manual r
 
 after_success:
-  - cd r && Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov("r")'
