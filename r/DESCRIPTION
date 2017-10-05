@@ -1,11 +1,11 @@
-Package: minicore
+Package: libcore
 Type: Package
-Title: Mini core library functions implemented in R
+Title: Stencila core function library implemented in R
 Version: 0.1.0
 Author: Contributors
 Maintainer: Nokome Bentley <nokome@stenci.la>
-Description: The Mini Core Library, a library of functions that are built in to Stencila's Mini language.
-    This package provides R implementations for some of those functions. See https://github.com/stencila/mini-core for more.
+Description: The Stencila Core Library, a library of functions that are built in to Stencila's Mini language.
+    This package provides R implementations for some of those functions. See https://github.com/stencila/libcore for more.
 License: Apache-2.0
 Encoding: UTF-8
 LazyData: true

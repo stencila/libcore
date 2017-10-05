@@ -1,4 +1,4 @@
 library(testthat)
-library(minicore)
+library(libcore)
 
-test_check("minicore")
+test_check("libcore")
