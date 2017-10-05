@@ -3,6 +3,10 @@ language: generic
 env:
   - R_LIBS_USER=~/R
 
+cache:
+  directories:
+    - ~/R
+
 addons:
   apt:
     sources:
@@ -16,7 +20,7 @@ install:
 
 script:
   - cd r && Rscript -e 'lintr::lint_package()'
-  - R CMD check --no-manual r
+  - cd r && R CMD check --no-manual .
 
 after_success:
   - cd r && Rscript -e 'covr::codecov()'
