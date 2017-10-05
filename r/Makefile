@@ -1,7 +1,7 @@
 all: setup test cover
 
 setup:
-	Rscript -e 'install.packages(c("devtools","testthat","covr"),repo="http://cloud.r-project.org/")'
+	Rscript -e 'install.packages(c("devtools", "roxygen2", "testthat", "covr"),repo="http://cloud.r-project.org/")'
 
 test:
 	Rscript -e 'devtools::test()'

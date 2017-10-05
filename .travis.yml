@@ -11,10 +11,10 @@ addons:
       - r-base
 
 install:
-  - mkdir -p ~/R
+  - mkdir -p ~/R && Rscript -e install.packages(c("testthat", "covr")
 
 script:
-  - cd r && sudo make setup && make test
+  - cd r && R CMD check .
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - cd r && Rscript -e 'covr::codecov()'

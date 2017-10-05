@@ -17,7 +17,7 @@ To test your function implementation, create a new test file in the `tests/testt
 Install some useful R packages for package development and testing, if you don't already have them,
 
 ```r
-install.packages(c('devtools', 'testthat', 'covr'))
+install.packages(c('devtools', 'roxygen2', testthat', 'covr'))
 ```
 
 Then run all the tests,
