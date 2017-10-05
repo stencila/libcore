@@ -1,0 +1,26 @@
+language: generic
+
+env:
+  - R_LIBS_USER=~/R
+
+cache:
+  directories:
+    - ~/R
+
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb https://cran.rstudio.com/bin/linux/ubuntu trusty/'
+    packages:
+      - r-base
+      - r-base-dev
+
+install:
+  - mkdir -p ~/R && Rscript -e 'install.packages(c("lintr", "testthat", "covr"), lib="~/R", repo="http://cloud.r-project.org/")'
+
+script:
+  - Rscript -e 'lintr::lint_package("r")' 
+  - R CMD check --no-manual r
+
+after_success:
+  - Rscript -e 'covr::codecov("r", relative_path=FALSE)'

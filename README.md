@@ -1,6 +1,7 @@
 ## `stencila/libcore` : core function library
 
 [![experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](http://github.com/badges/stability-badges)
+[![Code coverage](https://codecov.io/gh/stencila/libcore/branch/master/graph/badge.svg)](https://codecov.io/gh/stencila/libcore)
 [![Community](https://img.shields.io/badge/join-community-green.svg)](https://community.stenci.la)
 [![Chat](https://badges.gitter.im/stencila/stencila.svg)](https://gitter.im/stencila/stencila)
 
