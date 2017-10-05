@@ -9,3 +9,6 @@ Description: The Stencila Core Library, a library of functions that are built in
 License: Apache-2.0
 Encoding: UTF-8
 LazyData: true
+Suggests:
+    testthat,
+    covr

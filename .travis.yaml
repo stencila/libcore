@@ -1,0 +1,12 @@
+language: generic
+
+addons:
+  apt:
+    packages:
+      - r-base
+
+script:
+  - cd r && make setup && make test
+
+after_success:
+  - Rscript -e 'covr::codecov()'
