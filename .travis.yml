@@ -5,6 +5,8 @@ env:
 
 addons:
   apt:
+    sources:
+      - sourceline: 'deb https://cran.rstudio.com/bin/linux/ubuntu trusty/'
     packages:
       - r-base
 
