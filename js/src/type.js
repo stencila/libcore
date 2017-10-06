@@ -1,4 +1,4 @@
-function type (value) {
+export default function (value) {
   let type = typeof value
 
   if (value === null) {
@@ -19,5 +19,3 @@ function type (value) {
     return 'unknown'
   }
 }
-
-export default type
