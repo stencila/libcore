@@ -1,5 +1,6 @@
 export { version as _version } from '../package.json'
 
+export { default as assert } from './assert'
 export { default as array } from './array'
 
 export { default as filter } from './filter'
