@@ -1,31 +1,8 @@
-import { default as jStat } from 'jstat'
 import { default as stdlib } from '@stdlib/stdlib'
 
-export function max(x) {
-  return jStat.max(x)
-}
+import mean from './mean'
 
-export function mean(x) {
-  return jStat.mean(x)
-}
-
-export function median(x) {
-  return jStat.median(x)
-}
-
-export function min(x) {
-  return jStat.min(x)
-}
-
-export function mode(x) {
-  return jStat.mode(x)
-}
-
-export function sum(x) {
-  return jStat.sum(x)
-}
-
-export function ttest(x, y, mu, tails, paired, alpha) {
+export default function ttest(x, y, mu, tails, paired, alpha) {
   // FIXME: this seems to be inconsistent
   const implem = (stdlib.math.stats || stdlib.math.statistics).ttest
   const options = {

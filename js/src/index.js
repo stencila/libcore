@@ -1,13 +1,11 @@
 export { version as _version } from '../package.json'
 
 export { default as assert } from './assert'
-export { default as array } from './array'
-
-export { default as filter } from './filter'
-
-export { default as csv } from './csv'
-
-export * from './stats'
-
-export { default as table } from './table'
+export { defaut as is_array } from './is_array'
+export { defaut as is_boolean } from './is_boolean'
+export { defaut as is_integer } from './is_integer'
+export { defaut as is_number } from './is_number'
+export { defaut as is_object } from './is_object'
+export { defaut as is_string } from './is_string'
+export { default as sum } from './sum'
 export { default as type } from './type'
