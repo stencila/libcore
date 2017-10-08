@@ -13,6 +13,7 @@ export default function is_array (value, type = "any") {
     case "integer": return sa.isIntegerArray(value)
     case "number": return sa.isNumberArray(value)
     case "string": return sa.isStringArray(value)
+    case "object": return sa.isObjectArray(value)
     default: throw new Error(`Unknown type: ${type}`)
   }
 }
