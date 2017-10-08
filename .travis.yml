@@ -19,7 +19,7 @@ addons:
       - r-base-dev
 
 install:
-  - cd js && npm install
+  - (cd js; npm install)
   - mkdir -p ~/R && Rscript -e 'install.packages(c("lintr", "testthat", "covr"), lib="~/R", repo="http://cloud.r-project.org/")'
 
 script:
