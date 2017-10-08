@@ -1,5 +1,5 @@
-import { default as test } from 'tape'
-import { default as assert } from '../src/assert.js'
+import test from 'tape'
+import assert from '../src/assert.js'
 
 test('assert', function (t) {
   t.equal(assert(1 === 1, "one should equal one"), true)
