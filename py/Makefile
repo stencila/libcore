@@ -6,9 +6,9 @@ SETUP_PACKAGES := setuptools wheel tox twine pylint
 setup:
 	pip install --user $(SETUP_PACKAGES)
 
-# A global install is required for Travis as is the extra package `tox-travis`
+# On Travis the extra package `tox-travis` is required
 setup-travis:
-	pip install $(SETUP_PACKAGES) tox-travis
+	pip install --user $(SETUP_PACKAGES) tox-travis
 
 build:
 	python setup.py bdist_wheel
