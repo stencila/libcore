@@ -1,4 +1,5 @@
 let b = require('substance-bundler')
+let fork = require('substance-bundler/extensions/fork')
 let fs = require('fs')
 let cp = require('child_process')
 let { DefaultDOMElement } = require('substance')
@@ -9,6 +10,7 @@ const LIB_JS = `build/${LIB_NAME}.js`
 const LIB_CJS = `build/${LIB_NAME}.cjs.js`
 const LIB_TEST_JS = 'tmp/test.umd.js'
 const LIB_TEST_CJS = 'tmp/test.cjs.js'
+const LIB_TEST_COVER = 'tmp/test.cover.js'
 
 const LIB_XML_TEMPLATE = `
 <!DOCTYPE function PUBLIC "StencilaFunctionLibrary 1.0" "StencilaFunctionLibrary.dtd">
@@ -100,6 +102,22 @@ b.task('test', () => {
       })
     }
   })
+})
+
+b.task('cover', () => {
+  b.js(['./src/index.js', './test/index.js'], {
+    target: {
+      dest: LIB_TEST_COVER,
+      format: 'cjs',
+      istanbul: {
+        include: ['./src/**/*.js'],
+        exclude: ['./test/**/*.js']
+      },
+    },
+    external: EXTERNALS.concat(['tape']),
+    json: true
+  })
+  fork(b, 'node_modules/.bin/istanbul', 'cover ' + LIB_TEST_COVER)
 })
 
 b.task('test:browser', () => {
