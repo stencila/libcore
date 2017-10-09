@@ -20,12 +20,13 @@ addons:
 
 install:
   - mkdir -p ~/R && Rscript -e 'install.packages(c("lintr", "testthat", "covr"), lib="~/R", repo="http://cloud.r-project.org/")'
-  - (cd py; make setup-travis)
+  - (cd py; make setup-travis install)
 
 script:
   - Rscript -e 'lintr::lint_package("r")' 
   - R CMD check --no-manual r
-  - (cd py; make lint cover)
+  - (cd py; make lint)
+  - (cd py; make cover)
 
 after_success:
   - Rscript -e 'covr::codecov("r", relative_path=FALSE)'
