@@ -1,5 +1,6 @@
 export { version as _version } from '../package.json'
 
+export { default as aggregate } from './aggregate'
 export { default as array } from './array'
 export { default as assert } from './assert'
 export { default as clone } from './clone'

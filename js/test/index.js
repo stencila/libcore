@@ -2,6 +2,7 @@ if (typeof process !== 'undefined') {
   require('source-map-support').install()
 }
 
+export * from './aggregate'
 export * from './array'
 export * from './assert'
 export * from './clone'
