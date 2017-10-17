@@ -1,11 +1,24 @@
 export { version as _version } from '../package.json'
 
+export { default as aggregate } from './aggregate'
 export { default as array } from './array'
-
+export { default as assert } from './assert'
+export { default as clone } from './clone'
+export { default as extend } from './extend'
+export { default as is_array } from './is_array'
+export { default as is_boolean } from './is_boolean'
+export { default as is_integer } from './is_integer'
+export { default as is_number } from './is_number'
+export { default as is_object } from './is_object'
+export { default as is_string } from './is_string'
+export { default as is_table } from './is_table'
 export { default as filter } from './filter'
-
-export { default as csv } from './csv'
-
-export * from './stats'
-
+export { default as length } from './length'
+export { default as max } from './max'
+export { default as mean } from './mean'
+export { default as min } from './min'
+export { default as select } from './select'
+export { default as sum } from './sum'
+export { default as t_test } from './t_test'
 export { default as table } from './table'
+export { default as type } from './type'

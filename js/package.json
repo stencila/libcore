@@ -14,6 +14,7 @@
   "main": "build/stencila-libcore.cjs.js",
   "jsnext:main": "src/index.js",
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "source-map-support": "^0.4.18",
     "substance": "^1.0.0-beta.7-preview.11",
     "substance-bundler": "^0.18.5",

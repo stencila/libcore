@@ -1,4 +1,4 @@
-function type (value) {
+export default function (value) {
   let type = typeof value
 
   if (value === null) {
@@ -14,10 +14,11 @@ function type (value) {
     return 'string'
   } else if (type === 'object') {
     if (value.constructor === Array) return 'array'
-    else return 'object'
+    else {
+      if (value.type) return value.type
+      else return 'object'
+    }
   } else {
     return 'unknown'
   }
 }
-
-export default type
