@@ -24,7 +24,8 @@
   "dependencies": {
     "@stdlib/stdlib": "0.0.26",
     "d3": "^4.11.0",
-    "jstat": "^1.7.0"
+    "jstat": "^1.7.0",
+    "lodash-es": "^4.17.4"
   },
   "scripts": {
     "prepublish": "node make",
