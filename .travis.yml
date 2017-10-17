@@ -15,17 +15,24 @@ addons:
       - sourceline: 'deb https://cran.rstudio.com/bin/linux/ubuntu trusty/'
     packages:
       - nodejs
+      - python3
+      - python3-dev
+      - python3-pip
       - r-base
       - r-base-dev
 
 install:
   - (cd js; npm install)
   - mkdir -p ~/R && Rscript -e 'install.packages(c("lintr", "testthat", "covr"), lib="~/R", repo="http://cloud.r-project.org/")'
+  - (cd py; make setup-travis install)
 
 script:
   - (cd js; npm test)
   - Rscript -e 'lintr::lint_package("r")' 
   - R CMD check --no-manual r
+  - (cd py; make lint)
+  - (cd py; make cover)
 
 after_success:
   - Rscript -e 'covr::codecov("r", relative_path=FALSE)'
+  - bash <(curl -s https://codecov.io/bash)
