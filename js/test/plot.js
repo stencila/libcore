@@ -19,7 +19,7 @@ tape('plot', function (t) {
   const plot0 = plot(z)
   t.deepEqual(plot0.traces[0].x, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
   t.deepEqual(plot0.traces[0].y, z)
-  render(plot0, 'Plot single array (is used as y')
+  render(plot0, 'Plot single array (is used as y)')
 
   // Plotting two arrays
   const plot1 = plot(x, y)
@@ -32,15 +32,18 @@ tape('plot', function (t) {
   const plot2 = plot(table1)
   t.deepEqual(plot2, plot1)
 
-  // Plotting a table with `x` and `y` taken 
-  // from first two columns
-  const plot3 = plot(table2)
-  t.deepEqual(plot3, plot1)
-
   // Plotting a table with `x` and `y` defined
   // explicitly
-  const plot4 = plot(table2, 'var1', 'var2')
-  t.deepEqual(plot4, plot1)
+  const plot3 = plot(table2, 'var1', 'var2')
+  t.deepEqual(plot3.traces, plot1.traces)
+  t.deepEqual(plot3.layout.xaxis.title, 'Var 1')
+  t.deepEqual(plot3.layout.yaxis.title, 'Var 2')
+  render(plot3, 'Plot table with x and y columns specified')
+
+  // Plotting a table with `x` and `y` taken 
+  // from first two columns
+  const plot4 = plot(table2)
+  t.deepEqual(plot4, plot3)
 
   t.end()
 })

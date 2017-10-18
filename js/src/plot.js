@@ -1,8 +1,10 @@
 import is_array from './is_array'
 import is_table from './is_table'
 import length from './length'
+import { merge } from 'lodash-es'
 import sequence from './sequence'
 import table from './table'
+import title_case from './title_case'
 
 export default function plot (arg1, arg2, ...args) {
   if (is_table(arg1)) return _plot_table(arg1, arg2, ...args)
@@ -27,7 +29,7 @@ function _plot_array_array(x, y, ...args) {
   }), ...args)
 }
 
-function _plot_table(table, x, y) {
+function _plot_table(table, x, y, options = {}) {
   const columns = Object.keys(table.data)
 
   if (!x) {
@@ -44,23 +46,49 @@ function _plot_table(table, x, y) {
 
   let size = 10
 
+  let trace = {
+    type: 'scatter',
+    mode: 'markers',
+    x: table.data[x],
+    y: table.data[y],
+    marker: {
+      opacity: opacity,
+      size: size,
+      sizemode: 'area'
+    }
+  }
+
+  let layout = options
+
+  layout.xaxis = layout.xaxis || {}
+  layout.xaxis.title = layout.xaxis.title || title_case(x)
+
+  layout.yaxis = layout.yaxis || {}
+  layout.yaxis.title = layout.yaxis.title || title_case(y)
+
+  // Layout settings that are currently not optional
+
+  const axisSettings = {
+    linecolor: 'black',
+    linewidth: 1,
+    mirror: true, // By apply to both x and y, creates a bounding box
+    ticks: 'outside',
+    showspikes: false // Don't show "spikes"
+  }
+  merge(layout.xaxis, axisSettings)
+  merge(layout.yaxis, axisSettings)
+
+  layout.margin = {
+    l: 40,
+    r: 40,
+    t: 40,
+    b: 40
+  }
+
   return {
     type: 'plotly',
-    traces: [{
-      type: 'scatter',
-      mode: 'markers',
-      x: table.data[x],
-      y: table.data[y],
-      marker: {
-        opacity: opacity,
-        size: size,
-        sizemode: 'area'
-      }
-    }],
-    layout: {
-      // 
-      showspikes: false
-    }
+    traces: [trace],
+    layout: layout
   }
 }
 
