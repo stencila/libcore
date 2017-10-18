@@ -39,6 +39,16 @@ npm run test-browser
 
 then open `test/index.html`.
 
+To watch source code and run tests on changes use the `-w` flag to `make.js`
+
+```bash
+node make test -w
+```
+
+```bash
+node make test:browser -w
+```
+
 ### Try
 
 You can try out functions in the browser developer console by building the distribution:

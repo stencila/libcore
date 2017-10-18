@@ -5,8 +5,31 @@
     <title>Stencila libcore Javascript Tests</title>
     <script type="text/javascript" src="../node_modules/d3/build/d3.min.js"></script>
     <script type="text/javascript" src="../node_modules/jstat/dist/jstat.min.js"></script>
+    <script type="text/javascript" src="../node_modules/plotly.js/dist/plotly.min.js"></script>
     <script type="text/javascript" src="../node_modules/@stdlib/stdlib/dist/stdlib-tree.min.js"></script>
     <script type="text/javascript" src="../tmp/tape.umd.js"></script>
     <script type="text/javascript" src="../tmp/test.umd.js"></script>
+    <style type="text/css">
+    	/* Customisation of Plotly tool bar */
+	    .js-plotly-plot .plotly .modebar {
+	    	background: black;
+	    	border-radius: 3px;
+	    	padding: 3px;
+	    }
+    	.js-plotly-plot .plotly .modebar-btn path {
+    		fill: white;
+    	}
+    	.js-plotly-plot .plotly .modebar-btn.active path, 
+    	.js-plotly-plot .plotly .modebar-btn:hover path {
+		    fill: gray;
+		}
+    </style>
   </head>
+  <body style="font-size: 16px; font-family: Helvetica, sans; color: #555;">
+    <div style="max-width: 50em; margin: 1em auto">
+      <h1>Plots</h1>
+      <p>See <code>test/plot.js</code></p>
+      <div id="plots"></div>
+    </div>
+  </body>
 </html>

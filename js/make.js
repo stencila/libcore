@@ -70,7 +70,7 @@ b.task('lib', () => {
 })
 
 b.task('test', () => {
-  b.js('./test/index.js', {
+  b.js('./test/*.js', {
     target: {
       dest: LIB_TEST_CJS,
       format: 'cjs'
@@ -129,7 +129,7 @@ b.task('test:browser', () => {
       }
     })
   }
-  b.js('./test/index.js', {
+  b.js('./test/*.js', {
     target: {
       dest: LIB_TEST_JS,
       format: 'umd',
