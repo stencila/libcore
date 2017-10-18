@@ -32,7 +32,7 @@ b.task('clean', () => {
   b.rm('tmp')
 })
 
-b.task('build', ['xml', 'lib'])
+b.task('build', ['xml', 'lib', 'concat'])
 
 b.task('xml', () => {
   b.custom('Creating library XML...', {
