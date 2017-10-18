@@ -76,7 +76,8 @@ b.task('concat', ['lib'], () => {
       return new Promise((resolve, reject) => {
         concatFiles([
           './node_modules/jstat/dist/jstat.min.js',
-          './node_modules/@stdlib/stdlib/dist/stdlib-tree.min.js'
+          './node_modules/@stdlib/stdlib/dist/stdlib-tree.min.js',
+          LIB_JS
         ], LIB_ALL_JS, function(err) {
           if (err) throw reject(err)
           resolve()
