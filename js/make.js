@@ -2,12 +2,13 @@ let b = require('substance-bundler')
 let fork = require('substance-bundler/extensions/fork')
 let fs = require('fs')
 let cp = require('child_process')
+let concatFiles = require('concat-files')
 let { DefaultDOMElement } = require('substance')
-
 const LIB_NAME = 'stencila-libcore'
 const LIB_XML = `build/${LIB_NAME}.xml`
 const LIB_JS = `build/${LIB_NAME}.js`
 const LIB_CJS = `build/${LIB_NAME}.cjs.js`
+const LIB_ALL_JS = `build/${LIB_NAME}.all.js`
 const LIB_TEST_JS = 'tmp/test.umd.js'
 const LIB_TEST_CJS = 'tmp/test.cjs.js'
 const LIB_TEST_COVER = 'tmp/test.cover.js'
@@ -18,11 +19,10 @@ const LIB_XML_TEMPLATE = `
 FUNCTIONS
 </library>
 `
-const EXTERNALS = ['jstat', '@stdlib/stdlib', 'd3']
+const EXTERNALS = ['jstat', '@stdlib/stdlib']
 const GLOBALS = {
   'jstat': 'jStat',
-  '@stdlib/stdlib': 'stdlib',
-  'd3': 'd3'
+  '@stdlib/stdlib': 'stdlib'
 }
 
 b.task('default', ['clean', 'build'])
@@ -69,6 +69,23 @@ b.task('lib', () => {
   })
 })
 
+
+b.task('concat', ['lib'], () => {
+  b.custom('Concatenating files...', {
+    execute: () => {
+      return new Promise((resolve, reject) => {
+        concatFiles([
+          './node_modules/jstat/dist/jstat.min.js',
+          './node_modules/@stdlib/stdlib/dist/stdlib-tree.min.js'
+        ], LIB_ALL_JS, function(err) {
+          if (err) throw reject(err)
+          resolve()
+        })
+      })
+    }
+  })
+})
+
 b.task('test', () => {
   b.js('./test/*.js', {
     target: {
@@ -76,7 +93,6 @@ b.task('test', () => {
       format: 'cjs'
     },
     external: EXTERNALS.concat(['tape']),
-    // ignore: ['d3'],
     json: true
   })
   b.custom('Running tests...', {
