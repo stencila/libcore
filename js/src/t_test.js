@@ -3,8 +3,7 @@ import { default as stdlib } from '@stdlib/stdlib'
 import mean from './mean'
 
 export default function ttest(x, y, mu, tails, paired, alpha) {
-  // FIXME: this seems to be inconsistent
-  const implem = (stdlib.math.stats || stdlib.math.statistics).ttest
+  const implem = stdlib.math.stats.ttest
   const options = {
     mu: mu || 0,
     alternative: ['less', 'two-sided', 'greater'][(tails || 0) + 1],
