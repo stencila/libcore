@@ -1,6 +1,8 @@
 import tape from 'tape'
-import plot from '../src/plot.js'
-import table from '../src/table.js'
+import clone from '../src/clone'
+import plot from '../src/plot'
+import table from '../src/table'
+
 
 const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 const y = [0, 2, 1, 5, 4, 3, 6, 7, 9, 8]
@@ -71,6 +73,11 @@ function render (spec, label) {
     displaylogo: false, 
     showTips: true
   }
-  Plotly.plot(plot, spec.traces, spec.layout, options)
+
+  // `Plotly.plot` modifies the spec, use a copy of the so that it can be used in 
+  // subsequent test assertions
+  let copy = clone(spec)
+
+  Plotly.plot(plot, copy.traces, copy.layout, options)
   plots.appendChild(plot)
 }
