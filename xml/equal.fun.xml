@@ -1,0 +1,21 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name>equal</name>
+  <title>Equal</title>
+  <summary>Are two values equal?</summary>
+  <description>Performs a deep comparison between two values to determine if they are equivalent.</description>
+  <params>
+    <param name="value" type="any">
+      <description>The value to compare.</description>
+    </param>
+    <param name="other" type="any">
+      <description>The other value to compare.</description>
+    </param>
+  </params>
+  <return type="boolean">
+    <description>True if the values are equivalent, else false.</description>
+  </return>
+  <implems>
+    <implem language="js" />
+  </implems>
+</function>

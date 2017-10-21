@@ -1,0 +1,20 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name>test</name>
+  <title>Test</title>
+  <summary>If a value is true then return a passed test, otherwise return a failed test with an optional message.</summary>
+  <params>
+    <param name="value" type="boolean">
+    </param>
+    <param name="message" type="string">
+      <description>The failiure method</description>
+      <default type="string">Failed</default>
+    </param>
+  </params>
+  <return type="test">
+    <description>A test object</description>
+  </return>
+  <implems>
+    <implem language="js" />
+  </implems>
+</function>

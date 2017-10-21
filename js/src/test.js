@@ -1,4 +1,4 @@
-export default function test (condition, message = '') {
+export default function test (condition, message = 'Failed') {
   if (condition) {
     return {
       type: 'test',
@@ -9,7 +9,7 @@ export default function test (condition, message = '') {
     return {
       type: 'test',
       passed: false,
-      message: message.length ? message : 'Failed'
+      message: message
     }
   }
 }

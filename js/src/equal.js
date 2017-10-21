@@ -1,8 +1,8 @@
 import { isEqual } from 'lodash-es'
 import type from './type'
 
-export default function equal (observed, expected) {
-  const type_ = type(observed)
-  if (type_ !== type(expected)) return false
-  else return isEqual(observed, expected)
+export default function equal (value, other) {
+  const type_ = type(value)
+  if (type_ !== type(other)) return false
+  else return isEqual(value, other)
 }
