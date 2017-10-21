@@ -1,19 +1,20 @@
 <!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
 <function>
-  <name>equal</name>
-  <title>Equal</title>
-  <summary>Are two values equal?</summary>
-  <description>Performs a deep comparison between two values to determine if they are equivalent.</description>
+  <name>between</name>
+  <title>Between</title>
   <params>
-    <param name="value" type="any">
-      <description>The value to compare.</description>
+    <param name="value" type="number">
+      <description>The value to test.</description>
     </param>
-    <param name="other" type="any">
-      <description>The other value to compare.</description>
+    <param name="lower" type="number">
+      <description>The lower bound of the range.</description>
+    </param>
+    <param name="upper" type="number">
+      <description>The upper bound of the range.</description>
     </param>
   </params>
   <return type="boolean">
-    <description>True if the values are equivalent, else false.</description>
+    <description>True if the value is between lower and upper, else false.</description>
   </return>
   <implems>
     <implem language="js" />
