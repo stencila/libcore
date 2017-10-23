@@ -79,10 +79,10 @@ function _plot_table(table, x, y, options = {}) {
   merge(layout.yaxis, axisSettings)
 
   layout.margin = {
-    l: 40,
-    r: 40,
+    l: 50,
+    r: 50,
     t: 40,
-    b: 40
+    b: 50
   }
 
   return {
