@@ -14,10 +14,10 @@
   "main": "build/stencila-libcore.cjs.js",
   "jsnext:main": "src/index.js",
   "devDependencies": {
+    "browserify": "^14.5.0",
     "concat-files": "^0.1.1",
     "istanbul": "^0.4.5",
     "plotly.js": "^1.31.1",
-    "rollup": "^0.51.5",
     "source-map-support": "^0.4.18",
     "substance": "^1.0.0-beta.7-preview.11",
     "substance-bundler": "^0.18.5",
@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "@stdlib/stdlib": "0.0.26",
-    "browserify": "^14.5.0",
     "jstat": "^1.7.0",
     "lodash-es": "^4.17.4"
   },
