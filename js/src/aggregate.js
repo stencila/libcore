@@ -42,7 +42,7 @@ function _aggregate_table (value, by, summaries) {
   assert(is_object(summaries), 'parameter `summaries` must be an object')
   assert(is_string(by) || is_array(by, 'string'), 'parameter `by` must be a string, or an array of strings')
   by = array(by)
-  
+
   let groups = {}
   for (let row = 0; row < value.rows; row++) {
     let group = []
@@ -75,7 +75,7 @@ function _aggregate_table (value, by, summaries) {
     Object.keys(summaries).forEach(function(summary) {
       let summariser = function(group) { return eval(summaries[summary]) }
       aggregated[summary].push(summariser(group))
-    }) 
+    })
   })
   return table(aggregated)
 }
