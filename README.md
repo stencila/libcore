@@ -11,11 +11,11 @@ Mini is intentionally simple. Instead of trying to be a complete programming lan
 
 ### [`meta`](meta)
 
-The [`meta`](meta) folder is for cordinating design and implementations of functions across langages.
+A folder for cordinating design and implementations of functions across langages.
 
-### [`xml`](xml)
+### [`doc`](doc)
 
-Each function is defined in a `xml/*.fun.xml` file and implemented in one or more of the language packages.
+A folder for documentation for each function.
 
 ### [`js`](js)
 
@@ -29,11 +29,3 @@ A Python package of function implementations. See the [`py/README.d`](py#readme)
 
 A R package of function implementations. See the [`r/README.md`](js#readme) for instructions.
 
-### `Makefile`
-
-To compile and test packages for all languages:
-
-```bash
-make compile
-make test
-```
