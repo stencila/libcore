@@ -4,6 +4,8 @@ let fs = require('fs')
 let cp = require('child_process')
 let concatFiles = require('concat-files')
 let { DefaultDOMElement } = require('substance')
+const { FunctionJsDocConverter } = require('stencila-convert')
+
 const LIB_NAME = 'stencila-libcore'
 const LIB_XML = `build/${LIB_NAME}.xml`
 const LIB_JS = `build/${LIB_NAME}.js`
@@ -32,23 +34,36 @@ b.task('clean', () => {
   b.rm('tmp')
 })
 
-b.task('build', ['xml', 'lib', 'concat'])
+b.task('build', ['doc', 'lib', 'concat'])
 
-b.task('xml', () => {
-  b.custom('Creating library XML...', {
-    src: '../xml/*.fun.xml',
+b.task('doc', () => {
+  b.custom('Creating library documentation...', {
+    src: [
+      '../doc/*.fun.txt',
+      '../doc/*.fun.xml'
+    ],
     dest: LIB_XML,
     execute(files) {
-      let funs = []
-      files.forEach((f) => {
-        let xml = fs.readFileSync(f, 'utf-8')
-        const doc = DefaultDOMElement.parseXML(xml)
-        let fun = doc.find('function')
-        funs.push(fun.serialize())
+      let xmlPromises = []
+      files.forEach((file) => {
+        const data = fs.readFileSync(file, 'utf-8')
+        let xmlPromise
+        if (file.slice(-4) === '.txt') {
+          xmlPromise = (new FunctionJsDocConverter).load(data)
+        } else {
+          xmlPromise = Promise.resolve(data)
+        }
+        xmlPromises.push(xmlPromise)
       })
-      let xmlStr = LIB_XML_TEMPLATE.replace('FUNCTIONS', funs.join('\n'))
-      b.writeSync(LIB_XML, xmlStr, 'utf8')
-      b.writeSync(LIB_XML+'.js', 'window.STENCILA_LIBCORE = ' + JSON.stringify(xmlStr), 'utf8')
+      Promise.all(xmlPromises).then((xmls) => {
+        const funs = xmls.map((xml) => {
+          const dom = DefaultDOMElement.parseXML(xml)
+          return dom.find('function').serialize()
+        })
+        let xmlStr = LIB_XML_TEMPLATE.replace('FUNCTIONS', funs.join('\n'))
+        b.writeSync(LIB_XML, xmlStr, 'utf8')
+        b.writeSync(LIB_XML + '.js', 'window.STENCILA_LIBCORE = ' + JSON.stringify(xmlStr), 'utf8')
+      })
     }
   })
 })
