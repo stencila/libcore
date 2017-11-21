@@ -8,8 +8,8 @@ This function does nothing but is provided for completeness as the antonym of th
 
 @related negative
 
-@param {any} value The value
-@return {any} The value
+@param {number} value The value
+@return {number} The value
 
 @example positive(x)
 @example +x
