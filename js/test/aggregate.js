@@ -1,5 +1,7 @@
 import test from 'tape'
 import aggregate from '../src/aggregate.js'
+import call from '../src/call.js'
+import symbol from '../src/symbol.js'
 import table from '../src/table.js'
 
 test('aggregate', function (t) {
@@ -9,8 +11,8 @@ test('aggregate', function (t) {
       [1, 2, 3, 4, 5, 6, 7, 8, 9],
       ['a', 'a', 'b', 'b', 'c', 'c', 'c', 'c', 'd'],
       {
-        min: 'min(values)',
-        sum: 'sum(values)'
+        min: call('min',[symbol('.')]),
+        sum: call('sum',[symbol('.')])
       }
     ),
     table({
@@ -27,9 +29,9 @@ test('aggregate', function (t) {
     v2: [1, 1, 1, 1, 1, 1, 1, 1, 1]
   })
   t.deepEqual(
-    aggregate(table1, 'region',{
-      min_v1: 'min(group.v1)',
-      sum_v2: 'sum(group.v2)'
+    aggregate(table1, 'region', {
+      min_v1: call('min', [symbol('v1')]),
+      sum_v2: call('sum', [symbol('v2')])
     }),
     table({
       region: ['N', 'S', 'W', 'E'],
@@ -44,15 +46,35 @@ test('aggregate', function (t) {
     g2: ['a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'b'],
     v1: [1, 2, 3, 4, 5, 6, 7, 8, 9]
   })
+  const table3 = table({
+    g1: [1, 1, 2, 2],
+    g2: ['a', 'b', 'a', 'b'],
+    sum: [4, 6, 12, 23]
+  })
   t.deepEqual(
     aggregate(table2, ['g1', 'g2'],{
-      sum: 'sum(group.v1)'
+      sum: call('sum', [symbol('v1')])
     }),
-    table({
-      g1: [1, 1, 2, 2],
-      g2: ['a', 'b', 'a', 'b'],
-      sum: [4, 6, 12, 23]
-    })
+    table3
+  )
+
+  // Aggregate a table using a group encoding
+  const table4 = table({
+    g1: [1, 1, 1, 2, 2, 2, 3, 3, 3],
+    g2: [1, 1, 2, 2, 3, 3, 3, 3, 3],
+    v1: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  })
+  const table5 = table({
+    group: [1, 2, 4, 6, 9],
+    sum:   [3, 3, 4, 11, 24]
+  })
+  t.deepEqual(
+    aggregate(table4, {
+      group: call('multiply', [symbol('g1'), symbol('g2')])
+    },{
+      sum: call('sum', [symbol('v1')])
+    }),
+    table5
   )
 
   t.end()

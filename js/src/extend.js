@@ -1,6 +1,7 @@
 import array from './array'
 import assert from './assert'
 import clone from './clone'
+import evaluate from './evaluate'
 import is_array from './is_array'
 import is_object from './is_object'
 import is_table from './is_table'
@@ -24,9 +25,8 @@ function _extend_object (value, extensions) {
 
   let extended = clone(value)
   Object.keys(extensions).forEach(function(name) {
-    let extension = extensions[name]
-    let extender = new Function('object', `with(object) { return ${extension} }`)
-    extended[name] = extender(extended)
+    const extension = extensions[name]
+    extended[name] = evaluate(extension, extended)
   })
   return extended
 }
@@ -37,9 +37,8 @@ function _extend_table (value, extensions) {
   let objects = array(value)
   Object.keys(extensions).forEach(function(name) {
     let extension = extensions[name]
-    let extender = new Function('object', `with(object) { return ${extension} }`)
     objects.forEach(function(object) {
-      object[name] = extender(object)
+      object[name] = evaluate(extension, object)
     })
   })
   return table(objects)

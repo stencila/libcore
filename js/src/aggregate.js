@@ -1,10 +1,11 @@
-import array from './array'
 import assert from './assert'
+import evaluate from './evaluate'
 import is_array from './is_array'
 import is_object from './is_object'
 import is_string from './is_string'
 import is_table from './is_table'
 import length from './length'
+import symbol from './symbol'
 import table from './table'
 
 export default function aggregate(value, by, summaries) {
@@ -28,53 +29,60 @@ function _aggregate_array (value, by, summaries) {
     group: Object.keys(groups)
   }
   Object.keys(summaries).forEach(function(summary) {
-    // It is not possible to use a Function here because it does not
-    // use the module's scope as a closure so does not have access to summary
-    // functions like `min`, `mean`, `sum` etc
-    // let summariser = new Function('values', `return ${summaries[summary]}`)
-    let summariser = function(values) { return eval(summaries[summary]) }
-    aggregated[summary] = Object.keys(groups).map(group => summariser(groups[group]))
+    aggregated[summary] = Object.keys(groups).map(group => evaluate(summaries[summary], groups[group]))
   })
   return table(aggregated)
 }
 
 function _aggregate_table (value, by, summaries) {
   assert(is_object(summaries), 'parameter `summaries` must be an object')
-  assert(is_string(by) || is_array(by, 'string'), 'parameter `by` must be a string, or an array of strings')
-  by = array(by)
-
+  assert(is_string(by) || is_array(by, 'string') || is_object(by), 'parameter `by` must be a string, an array of strings, or an object')
+  
+  let byEncoding = {}
+  if (is_string(by)) {
+    byEncoding[by] = symbol(by)
+  } else if (is_array(by, 'string')) {
+    by.forEach(function(name) {
+      byEncoding[name] = symbol(name)
+    })
+  } else {
+    byEncoding = by
+  }
+  
   let groups = {}
   for (let row = 0; row < value.rows; row++) {
-    let group = []
-    by.forEach(function(name) {
-      let grouper = value.data[name]
-      if (typeof grouper === 'undefined') throw new Error(`table does not have column '${name}'`)
-      group.push(grouper[row])
-    })
-    // TODO Better way to greate a unique key from an array of values
-    let key = group.map(value => value.toString()).join('_@_@_')
+    let rowObject = {}
+    for (let name of Object.keys(value.data)) rowObject[name] = value.data[name][row]
+    
+    let key = Object.keys(byEncoding).map(function (name) {
+      let value = evaluate(byEncoding[name], rowObject)
+      rowObject[name] = value
+      return value.toString()
+    }).join('_@_@_')
+    
+    const names = Object.keys(rowObject)
     if (groups[key]) {
-      for (let name of Object.keys(value.data)) groups[key][name].push(value.data[name][row])
+      for (let name of names) groups[key][name].push(rowObject[name])
     } else {
       groups[key] = {}
-      for (let name of Object.keys(value.data)) groups[key][name] = [value.data[name][row]]
+      for (let name of names) groups[key][name] = [rowObject[name]]
     }
   }
+  
   let aggregated = {}
-  by.forEach(function(name) {
+  Object.keys(byEncoding).forEach(function(name) {
     aggregated[name] = []
   })
-  Object.keys(summaries).forEach(function(summary) {
-    aggregated[summary] = []
+  Object.keys(summaries).forEach(function(name) {
+    aggregated[name] = []
   })
   Object.keys(groups).forEach(function(key) {
     let group = groups[key]
-    by.forEach(function(name) {
+    Object.keys(byEncoding).forEach(function(name) {
       aggregated[name].push(group[name][0])
     })
-    Object.keys(summaries).forEach(function(summary) {
-      let summariser = function(group) { return eval(summaries[summary]) }
-      aggregated[summary].push(summariser(group))
+    Object.keys(summaries).forEach(function(name) {
+      aggregated[name].push(evaluate(summaries[name], group))
     })
   })
   return table(aggregated)
