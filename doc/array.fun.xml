@@ -1,0 +1,19 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name>array</name>
+  <title>Array</title>
+  <summary>Create an array from a value</summary>
+  <description></description>
+  <params>
+    <param name="" type="">
+      <description></description>
+      <default type=""></default>
+    </param>
+  </params>
+  <return type="">
+    <description></description>
+  </return>
+  <implems>
+    <implem language="js" />
+  </implems>
+</function>

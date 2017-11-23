@@ -1,0 +1,17 @@
+<!DOCTYPE function PUBLIC "StencilaFunction 1.0" "StencilaFunction.dtd">
+<function>
+  <name>table</name>
+  <title>Table</title>
+  <summary></summary>
+  <params>
+    <param name="value" type="any">
+      <description>The value to convert into a table, an object of arrays, or an array of objects.</description>
+    </param>
+  </params>
+  <return type="table">
+    <description>A table</description>
+  </return>
+  <implems>
+    <implem language="js" />
+  </implems>
+</function>
