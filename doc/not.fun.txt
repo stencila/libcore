@@ -9,7 +9,7 @@ If `value` is `true` then return `false`, and if `false` then return `true`. The
 @param {boolean} value The value to be negated
 @return {boolean} The logical inverse
 
-@example not(x < 4)
+@example not(x > 4)
 
 @implem js
 
