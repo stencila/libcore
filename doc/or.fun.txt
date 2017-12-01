@@ -1,4 +1,4 @@
-@name and
+@name or
 
 @param {any} value
 @param {any} other
