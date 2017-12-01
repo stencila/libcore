@@ -10,7 +10,6 @@ test('add', function (t) {
   t.deepEqual(add([1, 2], 'foo'), [1, 2, 'foo'])
   t.deepEqual(add([1, 2], ['foo', 'bar']), [1, 2, 'foo', 'bar'])
 
-  t.deepEqual(add('foo', [1, 2]), ['foo', 1, 2])
   t.deepEqual(add(['foo', 'bar'], [1, 2]), ['foo', 'bar', 1, 2])
 
   t.throws(() => add('foo', 2.2), /cannot add a "string" and a "number"/)
