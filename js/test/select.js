@@ -3,10 +3,10 @@ import select from '../src/select.js'
 import table from '../src/table.js'
 
 test('select', function (t) {
-  t.deepEqual(select(['a', 'b', 'c'], 1), ['a'])
+  t.deepEqual(select(['a', 'b', 'c'], 1), 'a')
   t.deepEqual(select(['a', 'b', 'c'], [1, 3]), ['a', 'c'])
   
-  t.deepEqual(select({'a': 1, 'b': 2, 'c': 3}, 'a'), {'a': 1})
+  t.deepEqual(select({'a': 1, 'b': 2, 'c': 3}, 'a'), 1)
   t.deepEqual(select({'a': 1, 'b': 2, 'c': 3}, ['a', 'c']), {'a': 1, 'c': 3})
   
   t.deepEqual(
@@ -17,9 +17,7 @@ test('select', function (t) {
       }), 
       'a'
     ),
-    table({
-      a: [1, 2, 3]
-    })
+    [1, 2, 3]
   )
   t.deepEqual(
     select(

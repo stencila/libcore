@@ -1,0 +1,7 @@
+@name less_or_equal
+
+@param {any} value
+@param {any} other
+@return {any}
+
+@implem js

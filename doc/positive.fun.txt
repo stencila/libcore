@@ -1,0 +1,19 @@
+@name positive
+@title positive
+@summary Return the value unmodifed
+
+@description 
+
+This function does nothing but is provided for completeness as the antonym of the `negative` function and to support the plus operator `+`. The `+` operator is an alias for `positive` e.g. `+x` is equivalent to `positive(x)`, which is equivalent to `x`.
+
+@related negative
+
+@param {number} value The value
+@return {number} The value
+
+@example positive(x)
+@example +x
+
+@implem js
+
+@author Nokome Bentley
