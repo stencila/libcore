@@ -34,13 +34,13 @@ b.task('clean', () => {
   b.rm('tmp')
 })
 
-b.task('build', ['doc', 'lib', 'concat'])
+b.task('build', ['defs', 'lib', 'concat'])
 
-b.task('doc', () => {
-  b.custom('Creating library documentation...', {
+b.task('defs', () => {
+  b.custom('Creating library definitions...', {
     src: [
-      '../doc/*.fun.txt',
-      '../doc/*.fun.xml'
+      '../defs/*.fun.txt',
+      '../defs/*.fun.xml'
     ],
     dest: LIB_XML,
     execute(files) {
