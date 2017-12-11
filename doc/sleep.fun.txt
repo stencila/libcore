@@ -1,0 +1,12 @@
+@name sleep
+
+@description
+
+Delay execution for a specified time interval (in seconds). 
+
+In Javascript this function is implemented in blocking, CPU-hogging way.
+
+@param {number} seconds Duration of delay
+@return {number} Duration of delay
+
+@implem js
