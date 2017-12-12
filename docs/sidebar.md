@@ -1,0 +1,3 @@
+- Welcome
+  - [Home](home.md)
+  - [Contributing](CONTRIBUTING.md)

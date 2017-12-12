@@ -1,0 +1,2 @@
+- <span class="project">Stencila Libcore</span>
+  - [Github repo](https://github.com/stencila/libcore)
