@@ -1,13 +1,9 @@
-:root {
-  --sans-font-family: 'Avenir Next', Lato, 'Nunito Sans', Helvetica, Arial, Verdana, sans-serif;
-  --mono-font-family: Monaco, Menlo, 'Ubuntu Mono', Consolas, 'Source Code Pro', monospace;
-}
-
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 body,
 input,
 textarea {
-  font-family: var(--sans-font-family);
+  font-family: 'Avenir Next', Lato, 'Nunito Sans', Helvetica, Arial, Verdana, sans-serif;
 }
 
 .app-nav,
@@ -71,8 +67,13 @@ textarea {
 	padding: 0.5em;
 }
 
+.sidebar ul li {
+	margin: 0 0 0 15px;
+}
+
 .sidebar ul li a {
 	font-size: 1em;
+	line-height: 1.5em;
 	color: #2568ef;
 }
 
@@ -89,20 +90,20 @@ textarea {
 .markdown-section a,
 .markdown-section a:hover {
 	text-decoration: none;
-	color: #2568ef;
 }
 
 .markdown-section code {
 	color: #4d7d40;
+	font-size: 1em;
 }
 
 .markdown-section pre code {
-	font-size: 1em;
+	font-size: 0.9em;
 	color: grey;
 }
 
 .markdown-section pre::after {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .markdown-section blockquote {
@@ -126,4 +127,16 @@ textarea {
 
 .markdown-section p.tip {
 	background: #ffe6e6;
+}
+
+.button {
+    padding: 0.9em;
+    color: white;
+    background: #2568ef;
+    border-radius: 3px;
+}
+
+.button:hover {
+	background: #2a5fca;
+	color: #DDD;
 }

@@ -20,7 +20,7 @@
     "plotly.js": "^1.31.1",
     "source-map-support": "^0.4.18",
     "stencila-convert": "0.1.2",
-    "stencila-docket": "^1.0.0",
+    "stencila-docket": "^1.0.2",
     "substance": "^1.0.0-beta.7-preview.11",
     "substance-bundler": "^0.18.5",
     "tap-spec": "^4.1.1",

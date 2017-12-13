@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="//unpkg.com/docsify-copy-code@1.0.0/styles.css">
 
   <link rel="stylesheet" href="index.css">
+  
+  <link rel="stylesheet" href="local.css">
+  <script src="local.js"></script>
 </head>
 <body>
   <div id="app"></div>
@@ -27,7 +30,8 @@
       loadSidebar: 'sidebar.md',
       loadNavbar: 'navbar.md',
       plugins: [
-        window.DocsifyCopyCodePlugin.init()
+        window.DocsifyCopyCodePlugin.init(),
+        window.localPlugin
       ]
     }
   </script>
