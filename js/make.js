@@ -3,6 +3,7 @@ let fork = require('substance-bundler/extensions/fork')
 let fs = require('fs')
 let cp = require('child_process')
 let concatFiles = require('concat-files')
+let path = require('path')
 let { DefaultDOMElement } = require('substance')
 const { FunctionJsDocConverter } = require('stencila-convert')
 
@@ -55,7 +56,7 @@ b.task('defs', () => {
         }
         xmlPromises.push(xmlPromise)
       })
-      Promise.all(xmlPromises).then((xmls) => {
+      return Promise.all(xmlPromises).then((xmls) => {
         const funs = xmls.map((xml) => {
           const dom = DefaultDOMElement.parseXML(xml)
           return dom.find('function').serialize()
@@ -63,6 +64,89 @@ b.task('defs', () => {
         let xmlStr = LIB_XML_TEMPLATE.replace('FUNCTIONS', funs.join('\n'))
         b.writeSync(LIB_XML, xmlStr, 'utf8')
         b.writeSync(LIB_XML + '.js', 'window.STENCILA_LIBCORE = ' + JSON.stringify(xmlStr), 'utf8')
+      })
+    }
+  })
+})
+
+b.task('docs', () => {
+  b.custom('Creating library documentation...', {
+    src: [
+      '../defs/*.fun.txt',
+      '../defs/*.fun.xml'
+    ],
+    dest: '../docs/',
+    execute(files) {
+      const promises = files.map((file) => {
+        const data = fs.readFileSync(file, 'utf-8')
+        let xmlPromise
+        if (file.slice(-4) === '.txt') xmlPromise = (new FunctionJsDocConverter).load(data)
+        else xmlPromise = Promise.resolve(data)
+        return xmlPromise.then((xml) => {
+          const dom = DefaultDOMElement.parseXML(xml)
+          const func = dom.find('function')
+          const name = func.find('name').text()
+          
+          function get (elem, selector) {
+            const el = elem.find(selector)
+            return (el ? el.text() : '')
+          }
+
+          let md = '<!--- Generated documentation. Do not edit! -->\n\n'
+
+          md += `# \`${name}\``
+          let summary = func.find('summary')
+          if (summary) md += ' : ' + summary.text()
+          md += '\n\n'
+
+          let params = dom.findAll('params param')
+          if (params.length) {
+            md += `### Parameters\n\n`
+            md += `Name | Type | Default | Description\n`
+            md += `---- | ---- | ------- | -----------\n`
+            params.forEach((param) => {
+              md += `\`${param.attr('name')}\` | ${param.attr('type')} | `
+              let defaulto = param.find('default')
+              if (defaulto) md += `\`${defaulto.text()}\` | `
+              else md += ' |'
+              md += get(param,'description') + '\n'
+            })
+            md += '\n\n'
+          }
+
+          md += `### Description\n\n`
+          md += `${get(func, 'description')}\n\n`
+
+          let examples = dom.findAll('examples example')
+          if (examples.length) {
+            md += `### Examples\n\n`
+            examples.forEach((example) => {
+              md += `${get(example, 'description')}\n`
+              md += '```mini\n' + get(example, 'usage') + '\n```\n\n'
+            })
+          }
+
+          let defPath = path.relative(path.join(__dirname, '..'), file)
+          md += '<p class="tools">\n'
+          md += `  <a class="edit button" href="https://github.com/stencila/libcore/edit/master/${defPath}" target="_blank">Improve the docs 🖉</a>\n`
+          md += `  <a class="code button" href="https://github.com/stencila/libcore/blob/master/js/src/${name}.js" target="_blank">See the code 👁</a>\n`
+          md += '</p>\n'
+
+          b.writeSync(`../docs/functions/${name}.md`, md, 'utf8')
+          return name
+        })
+      })
+      return Promise.all(promises).then((funcs) => {
+        let sidebar = ''
+        let lines = fs.readFileSync('../docs/sidebar.md', 'utf8').split('\n')
+        for (let line of lines) {
+          sidebar += line + '\n'
+          if (line === '- Functions') break
+        }
+        funcs.sort().forEach((func) => {
+          sidebar += `  - [${func}](functions/${func}.md)\n`
+        })
+        b.writeSync('../docs/sidebar.md', sidebar, 'utf8')
       })
     }
   })
@@ -83,7 +167,6 @@ b.task('lib', () => {
     json: true
   })
 })
-
 
 b.task('concat', ['lib'], () => {
   b.custom('Concatenating files...', {
