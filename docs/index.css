@@ -140,3 +140,14 @@ textarea {
 	background: #2a5fca;
 	color: #DDD;
 }
+
+/* Mini code highlighting */
+
+.token.function {
+	color: green;
+}
+
+.token.symbol {
+	color: #e144e7;
+	font-style: italic;
+}
