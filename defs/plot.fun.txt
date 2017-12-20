@@ -1,0 +1,17 @@
+@name plot
+@title plot
+@summary Create a plot value
+
+@description 
+
+Creates a plot.
+
+@param {any} arg1 Either an array or a table
+@param {any} [arg2=null] An array
+@return {plot} A new plot
+
+@example plot(x)
+@example plot(x, y)
+@example plot({x: x, y: y})
+
+@implem js
