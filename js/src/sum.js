@@ -1,7 +1,21 @@
-import { default as jStat } from 'jstat'
+import type from './type'
 
-import { _wrap_array_number } from '../src/_helpers'
-
-export default function sum(value) {
-  return _wrap_array_number(jStat.sum, value)
+export default function sum(...values) {
+  let result = 0
+  for (let value of values) {
+    switch (type(value)) {
+      case 'number':
+      case 'integer':
+        result += value
+        break
+      case 'array[number]':
+      case 'array[integer]':
+        for (let item of value) result += item
+        break
+      default:
+        throw new Error('Unhandled type: ' + type(value))
+    }
+  }
+  return result
 }
+sum.pars = ['...values']
