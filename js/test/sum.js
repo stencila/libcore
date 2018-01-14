@@ -8,6 +8,6 @@ test('sum', function (t) {
   t.equal(sum(1, 2, 3), 6)
   t.equal(sum(1, 2, [3, 4], 5), 15)
 
-  t.throws(() => sum(1), /parameter `value` must be an array of numbers/)
+  t.throws(() => sum(1, 'foo', 3), /Unhandled argument type "string"/)
   t.end()
 })

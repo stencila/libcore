@@ -13,7 +13,7 @@ export default function sum(...values) {
         for (let item of value) result += item
         break
       default:
-        throw new Error('Unhandled type: ' + type(value))
+        throw new Error('Unhandled argument type "' + type(value) + '"')
     }
   }
   return result
