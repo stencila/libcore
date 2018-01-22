@@ -8,6 +8,6 @@ The scope of the Stencila Core Library is corresponding with:
  * [Python Standard Library](https://docs.python.org/3/library/index.html);
  * [R Base Package](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html).
 
-See detailed guidelines on how to [contriubute to the LibCore](https://github.com/stencila/libcore/blob/master/CONTRIBUTING.md).
+See detailed guidelines on how to [contribute to the LibCore](https://github.com/stencila/libcore/blob/master/CONTRIBUTING.md).
 
 [mini]: languages/mini/README.md
