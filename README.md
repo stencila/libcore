@@ -9,7 +9,7 @@ This the Stencila Core Library, a library of functions that are built in to Sten
 
 Want to see a list of functions currently implemented in Stencila? Check out our list of functions [here](https://stencila.github.io/libcore/#/).
 
-Want to contribute a function to Libcore? More on contributing to Libcore [here](https://github.com/stencila/libcore/blob/master/docs/CONTRIBUTING.md).
+Want to contribute a function to Libcore? More on contributing to Libcore [here](https://github.com/stencila/libcore/blob/master/CONTRIBUTING.md).
 
 Stencila functions can be implemented, and used, in a variety of languages. Mini is intentionally simple. Instead of trying to be a complete programming language, it focuses on being a "glue" between other languages. This allows functions to be implemented using the best language for the job. And when a function is implemented in multiple languages, this approach allows for the optimization of function calls based on implementation speed and data location. Learn more about Mini [here](https://github.com/stencila/mini).
 
@@ -19,8 +19,7 @@ A folder for cordinating design and implementations of functions across langages
 
 ### [`docs`](docs)
 
-A folder for documentation for each function, and additional documentation for Libcore including CONTRIBUTING.md and CODE_OF_CONDUCT.MD.
-
+A folder for documentation for each function, and additional documentation for Libcore.
 ### [`defs`](defs)
 Source files for each function. 
 
