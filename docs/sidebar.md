@@ -1,6 +1,6 @@
 - Welcome
-  - [Home](README.md)
-  - [Contributing](CONTRIBUTING.md)
+  - [Home](home.md)
+  - [Contributing](../CONTRIBUTING.md)
 - Functions
   - [add](functions/add.md)
   - [and](functions/and.md)
