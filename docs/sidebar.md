@@ -1,7 +1,4 @@
-- Welcome
-  - [Home](home.md)
-  - [Contributing](CONTRIBUTING.md)
-  - [Code of Conduct](CODE_OF_CONDUCT.md)
+- [About](about.md)
 - Functions
   - [add](functions/add.md)
   - [and](functions/and.md)
