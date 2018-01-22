@@ -1,3 +1,4 @@
+# Stencila Core Library
 
 [Stencila Core Library](https://github.com/stencila/libcore) (LibCore) is a library of functions that are built into Stencila's [Mini][mini] language. The default implementation of Mini is done in [Javascript](https://github.com/stencila/libcore/tree/master/js). That is, in fact, Mini calls upon Javascript operations. The default implementation in Javascript allows for performing work in Stencila only by the means of a browser. Users who do not have access to other execution contexts (R, Python and so forth) are still able to manipulate their data.
 
