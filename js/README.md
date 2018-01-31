@@ -31,6 +31,12 @@ Run all tests in Node.js:
 npm test
 ```
 
+Run a single test in Node.js
+
+```bash
+npm run test-one -- test/sum.js
+```
+
 Run all tests in the browser:
 
 ```bash
