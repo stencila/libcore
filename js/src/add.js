@@ -7,6 +7,21 @@ import is_string from './is_string'
 import is_table from './is_table'
 import type from './type'
 
+/**
+@title add
+@summary Addition of two values
+
+@description 
+
+Returns the addition of two values. The plus sign, `+`, is used as an alias for `add` e.g. `x + y` is equivalent to `add(x, y)`.
+
+@param {any} value The number
+@param {any} other The other number
+@return {any} Result of addition
+
+@example add(x, y)
+@example x + y
+ */
 export default function add(value, other) {
   if (is_number(value) && is_number(other)) return value + other
   if (is_string(value) && is_string(other)) return value + other
