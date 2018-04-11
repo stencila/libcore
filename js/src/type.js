@@ -1,4 +1,4 @@
-export default function (value) {
+export default function type (value) {
   let type = typeof value
 
   if (value === null) {
