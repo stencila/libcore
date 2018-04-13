@@ -1,6 +1,20 @@
 import { default as jStat } from 'jstat'
-
 import { _wrap_array_number } from '../src/_helpers'
+
+
++/**
++@title mean
++@summary Calculate arithmetic mean. Uses jStat.mean
++
++@param {array[numbers]} value The array of numbers to have arithmetic mean calculated.
++@return {number} The calculated mean.
++
++@example mean(value)
++@example <caption>Example usage of mean function.</caption>
++@example mean([1 ,2, 3])
++@example return 2;
++ */
+
 
 export default function mean(value) {
   return _wrap_array_number(jStat.mean, value)
