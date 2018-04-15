@@ -1,3 +1,5 @@
+import { merge } from 'lodash-es'
+
 import is_array from './is_array'
 
 /*
@@ -12,6 +14,27 @@ export default function plotly (traces, layout) {
   // allowing for a single trace
   if (!is_array(traces)) traces = [traces]
   layout = layout || {}
+
+  
+  layout.xaxis = layout.xaxis || {}
+  layout.yaxis = layout.yaxis || {}
+  const axisSettings = {
+    linecolor: 'black',
+    linewidth: 1,
+    mirror: true, // By apply to both x and y, creates a bounding box
+    ticks: 'outside',
+    showspikes: false // Don't show "spikes"
+  }
+  merge(layout.xaxis, axisSettings)
+  merge(layout.yaxis, axisSettings)
+
+  layout.margin = {
+    l: 50,
+    r: 50,
+    t: 40,
+    b: 50
+  }
+
   return {
     type: 'plotly',
     traces,
