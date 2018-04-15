@@ -1,0 +1,26 @@
+<function>
+    <name>plotly</name>
+    <title>plotly</title>
+    <summary>Create a plot object that can be rendered using Plotly</summary>
+    <description>Creates a configuration for a Plotly plot.</description>
+    <examples>
+        <example>
+            <usage>plotly({ x: [1, 2, 3], y: [10, 5, 22], type: 'line' })</usage>
+        </example>
+    </examples>
+    <params>
+        <param name="traces" type="any">
+            <description>Either an array or an objet</description>
+        </param>
+        <param name="layout" type="object">
+            <default type="null">null</default>
+            <description>An object</description>
+        </param>
+    </params>
+    <return type="plot">
+        <description>A new plot</description>
+    </return>
+    <implems>
+        <implem language="js"/>
+    </implems>
+</function>
