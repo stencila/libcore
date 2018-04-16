@@ -7,6 +7,41 @@ import is_string from './is_string'
 import is_table from './is_table'
 import length from './length'
 
+/**
++@title select
+@title Select
++@summary  Select one or more members of a value
++
++@description
++
++A general purpose function for selecting members of a compound value (e.g. array, object or table). When the `members` parameter
++is an atomic value (e.g. an integer or a string) then a single member is returned. For example, `select(array, 2)`
++returns the second member of an array. When `members` is an array, then one or more members are returned. One-based indexing is used.
++
++The dot operator `.` is an alias for `select` with a single string e.g `table.column1` is equivalent to `select(table, 'column1')`.
++
++The square brackets operator `[]` is an alias for `select` for other member selectors e.g `table[['column1', 'column2']]` is equivalent to
++`select(table, ['column1', 'column2'])`.
++
++@param {array|object|table} value The value to select values from.
++@param {any} members The members to select from the value.
++@return  {any} The members of the value
++
++@implem js
++
++@author Nokome Bentley
++
++@example select(value, members)
++@example <caption>Example usage of select function.</caption>
++@example select([2,1,5], 1)
++@example returns 2
++
++@example select({a: [1, 2, 3], b: ['1', '2', '3']}, 'a')
++@example returns   [1, 2, 3]
++ */
+
+
+
 export default function select(value, items) {
   if (is_array(value)) return _select_array(value, items)
   else if (is_table(value)) return _select_table(value, items)
