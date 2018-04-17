@@ -26,7 +26,7 @@ T@param {any} summaries The summary function(s) to be used for aggregation. Must
 +
 +@example aggregate(value, by, summaries)
 +
-+@example <caption>Example usage of aggreate function.</caption>
++@example <caption>Example usage of aggregate function.</caption>
 
 +@example
 +const table1 = table({
