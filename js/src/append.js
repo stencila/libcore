@@ -9,7 +9,7 @@ import is_array from './is_array'
 *
 * @description
 *
-* Appends the element to the array and returns the new array, with the appended item..
+* Appends the element to the array and returns the new array, with the appended item.
 *
 * @param {array} array The array.
 * @param {any} element The element to be appended.
