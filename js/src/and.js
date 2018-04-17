@@ -1,7 +1,7 @@
 import assert from './assert'
 import is_boolean from './is_boolean'
 
-+/**
+/**
 +@title and
 +@summary Logical AND.
 +
