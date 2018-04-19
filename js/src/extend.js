@@ -6,6 +6,24 @@ import is_object from './is_object'
 import is_table from './is_table'
 import table from './table'
 
+/**
+* @title extend
+* @name extend
+* @summary Extends the value (array, object or table) with a given extension.
+*
+*
+* @param {array|object|table} value The value to be extended.
+* @param {any} extension The extension to be added to the value.
+* @return {array|object|table} The extended value.
+*
+* @example extend(value, extension)
+* @example <caption>Example usage of extend function.</caption>
+*
+* @example extend([1], [2, 3])
+* @example returns [1, 2, 3]
+*/
+
+
 export default function extend(value, extensions) {
   if (is_array(value)) return _extend_array(value, extensions)
   else if (is_table(value)) return _extend_table(value, extensions)
