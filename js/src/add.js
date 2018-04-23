@@ -10,20 +10,26 @@ import type from './type'
 /**
 * @title add
 * @name add
-* @summary Addition of two values
+* @summary Addition of two values.
 *
 * @description
 *
 * Returns the addition of two values. The plus sign, `+`, is used as an alias for `add` e.g. `x + y` is equivalent to `add(x, y)`.
+* Both values have to be of the same type: number, string, array, table or object. If the values are array, table or object, the function
+* will use either extend or append to add the values.
 *
-* @param {any} value The number
-* @param {any} other The other number
-* @return {any} Result of addition
+* @param {number|string|array|table|object} value The value to have other value added.
+* @param {number|string|array|table|object} other The other value.
+* @returns {number|string|array|table|object} Result of addition.
 *
 * @implem js
 *
-* @example add(x, y)
-* @example x + y
+* @example <caption>Example usage of add function.</caption>
+* // returns 6
+* add(2, 4)
+* @example
+* // returns [1, 2, 3, 4]
+* add([1,2], [3,4])
 */
 
 export default function add(value, other) {
