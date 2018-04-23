@@ -13,7 +13,7 @@ import { default as stdlib } from '@stdlib/stdlib'
 * @implem js
 * @example <caption>Example usage of is_integer function.</caption>
 * // returns true
-* is_integer(false)
+* is_integer(5)
 *
 */
 
