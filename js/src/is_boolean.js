@@ -11,9 +11,9 @@ import { default as stdlib } from '@stdlib/stdlib'
 * @returns {boolean} True if the value is of type boolean, else false.
 *
 * @implem js
-* @example <caption>Example usage of aggregate function.</caption>
+* @example <caption>Example usage of is_boolean function.</caption>
 * // returns true
-* is_array(false)
+* is_boolean(false)
 *
 */
 
