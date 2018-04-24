@@ -24,6 +24,8 @@ import title_case from './title_case'
 * // const z = [0, -2, 1, -5, -4, -3, -6, -7, -9, -8]
 * plot(z)
 *
+* @author Nokome Bentley
+*
 */
 
 export default function plot (arg1, arg2, ...args) {
