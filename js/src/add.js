@@ -7,21 +7,33 @@ import is_string from './is_string'
 import is_table from './is_table'
 import type from './type'
 
+
+
 /**
-@title add
-@summary Addition of two values
+* @title add
+* @name add
+* @summary Addition of two values.
+*
+* @description
+*
+* Returns the addition of two values. The plus sign, `+`, is used as an alias for `add` e.g. `x + y` is equivalent to `add(x, y)`.
+* Both values have to be of the same type: number, string, array, table or object. If the values are array, table or object, the function
+* will use either extend or append to add the values.
+*
+* @param {number|string|array|table|object} value The value to have other value added.
+* @param {number|string|array|table|object} other The other value.
+* @returns {number|string|array|table|object} Result of addition.
+*
+* @implem js
+*
+* @example <caption>Example usage of add function.</caption>
+* // returns 6
+* add(2, 4)
+* @example
+* // returns [1, 2, 3, 4]
+* add([1,2], [3,4])
+*/
 
-@description 
-
-Returns the addition of two values. The plus sign, `+`, is used as an alias for `add` e.g. `x + y` is equivalent to `add(x, y)`.
-
-@param {any} value The number
-@param {any} other The other number
-@return {any} Result of addition
-
-@example add(x, y)
-@example x + y
- */
 export default function add(value, other) {
   if (is_number(value) && is_number(other)) return value + other
   if (is_string(value) && is_string(other)) return value + other

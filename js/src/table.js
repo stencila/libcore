@@ -3,6 +3,28 @@ import is_array from './is_array'
 import is_object from './is_object'
 import is_table from './is_table'
 
+/**
+* @title table
+* @name table
+* @summary Create a table value
+*
+* @description
+*
+* Creates a table from either an object of arrays, or an array of objects.
+*
+* @param {any} value Either an object of arrays, or an array of objects
+* @return {table} A new value of type 'table'
+*
+* @implem js
+*
+* @example table(x, upper, lower)
+* @example <caption>Example usage of table function.</caption>
+* // returns {type: 'table', data: {a: [1, 2, 3], b: ['1', '2', '3']}, columns: 2, rows: 3}
+* table({ a: 1, b: '1' },{ a: 2, b: '2' },{ a: 3, b: '3' })
+*
+* @author Nokome Bentley
+*/
+
 export default function table (value) {
   if (is_table(value)) return value
   else if (is_array(value, "object")) return _table_array_object(value)

@@ -1,3 +1,29 @@
+/**
+* @title type
+* @name type
+* @summary Get the type name of a value.
+*
+* @description A base function that returns the type name e.g. "number" of a value.
+*
+* @param {any} value The value for which the type is wanted.
+* @returns {string} True if the value is of type boolean, else false.
+*
+* @implem js
+* @example <caption>Example usage of type function. Get the type of an integer literal. </caption>
+* // returns "integer"
+* type(42)
+*
+* @example <caption>Example usage of type function. Get the type of a one-dimensional array of Sheet cells. </caption>
+* // returns "array[string]"
+* type(A1:A10)
+*
+** @example <caption>Example usage of type function. Get the type of a two-dimensional array of Sheet cells.</caption>
+* // returns "matrix[number]"
+* type(A1:D5)
+*/
+
+
+
 export default function type (value) {
   let type = typeof value
 

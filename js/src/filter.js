@@ -4,24 +4,28 @@ import is_object from './is_object'
 import is_table from './is_table'
 import table from './table'
 
-+/**
-+@title filter
-+@summary
-+
-+@description
-+
-+Flters data from the provided value (array, table or object) matching given clause (parameters)
-+and returns it as an array, table or object.
-+
-+@param {array|table|object} value The tested value
-+@param {number} clause The lower bound of the range.
-+@return {array|table|object} The array, table or object containing filtered values matching the clause.
-+
-+@example filter(value, clause)
-+@example <caption>Example usage of filter function.</caption>
-+@example filter(['a', 'b', 'c'],  'index == 2 || value == "c"')
-+@example returns ['b', 'c']
-+ */
+/**
+* @title filter
+* @name filter
+* @summary Filters the data matching the given clause.
+*
+* @description
+*
+* Filters data from the provided value (array, table or object) matching given clause (parameters)
+* and returns it as an array, table or object.
+*
+* @param {array|table|object} value The data to be filtered.
+* @param {number} clause The clause to be match for filtering.
+* @return {array|table|object} The array, table or object containing filtered values matching the clause.
+*
+* @implem js
+*
+* @example filter(value, clause)
+* @example <caption>Example usage of filter function.</caption>
+* // returns ['b', 'c']
+* filter(['a', 'b', 'c'],  'index == 2 || value == "c"')
+*
+*/
 
 
 export default function filter(value, clause) {
