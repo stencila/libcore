@@ -7,20 +7,22 @@ import is_string from '../src/is_string'
 /**
 * @title is_array
 * @name is_array
-* @summary Checks what elements the array contains.
+* @summary Checks if the array is the array of the given type of elements.
 *
 * @description
 *
 * Checks the types of elements that the array contains. Returns true if the elements are of the given type, else returns false.
 *
-* @param {array} value The array to be checked
-* @param {string} type The type of element, by default the type is "any".
+* @param {array} value The array to be checked.
+* @param {string} type The type of element, by default the value is "any".
 * @return {boolean} Tue if array contains the elements of given type, else false.
 *
 * @implem js
 *
-* @example is_array([true, false], "boolean")
-* @example @returns true
+* @example <caption>Example usage of is_array function.</caption>
+* // returns true
+* is_array([true, false], "boolean")
+*
 */
 
 
