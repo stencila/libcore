@@ -9,7 +9,7 @@ import table from './table'
 
 /**
 * @title aggregate
-* @summary Agggregate values by the specified variable(s) using summary function(s).
+* @summary Aggregate values by the specified variable(s) using summary function(s).
 *
 * @description
 *
@@ -21,25 +21,25 @@ import table from './table'
 *
 * @param {(array|table)} value The values to be aggregated. Must be either array or table.
 * @param {(array|string)} by The variable(s) for the value to be aggregated by. Must be either string or array.
-T@param {any} summaries The summary function(s) to be used for aggregation. Must be an object.
+* @param {any} summaries The summary function(s) to be used for aggregation. Must be an object.
 * @return {(table|array)} Aggregated data in table or array.
 *
+* @implem js
 * @example aggregate(value, by, summaries)
 *
 * @example <caption>Example usage of aggregate function.</caption>
-
+* // returns table({
+* region: ['N', 'S', 'W', 'E'],
+* min_v1: [1, 3, 5, 9],
+* sum_v2: [2, 2, 4, 1]})
+*
 * @example
-* const table1 = table({
+* // @const table1 = table({
 * region: ['N', 'N', 'S', 'S', 'W', 'W', 'W', 'W', 'E'],
 * v1: [1, 2, 3, 4, 5, 6, 7, 8, 9],
 * v2: [1, 1, 1, 1, 1, 1, 1, 1, 1]
 * })
 * aggregate(table1, 'region',{min_v1:'min(group.v1)', sum_v2:'sum(group.v2)' } )
-* returns table({
-* region: ['N', 'S', 'W', 'E'],
-* min_v1: [1, 3, 5, 9],
-* sum_v2: [2, 2, 4, 1]
-})
 */
 
 
