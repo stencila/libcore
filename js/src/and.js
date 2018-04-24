@@ -2,20 +2,21 @@ import assert from './assert'
 import is_boolean from './is_boolean'
 
 /**
-+@title and
-+@summary Logical AND.
-+
-+@param {boolean} value The first value.
-+@param {boolean} other The other value.
-+@return {boolean} True if both values are true, else false.
-+
-+@implem js
-+
-+@example and(value, other)
-+@example <caption>Example usage of and function.</caption>
-+@example and(True, False)
-+@example returns True
-+ */
+* @title and
+* @summary Logical AND.
+*
+* @param {boolean} value The first value.
+* @param {boolean} other The other value.
+* @return {boolean} True if both values are true, else false.
+*
+* @implem js
+*
+* @example and(value, other)
+* @example <caption>Example usage of and function.</caption>
+* // returns True
+* @example and(True, False)
+*
+*/
 
 
 export default function and(value, other) {
