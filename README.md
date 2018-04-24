@@ -26,12 +26,3 @@ Source files for each function.
 ### [`js`](js)
 
 A Javascript package of function implementations. See the [`js/README.md`](js#readme) for instructions.
-
-### [`py`](js)
-
-A Python package of function implementations. See the [`py/README.d`](py#readme) for instructions.
-
-### [`r`](r)
-
-A R package of function implementations. See the [`r/README.md`](js#readme) for instructions.
-
