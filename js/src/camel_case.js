@@ -11,14 +11,17 @@ import { camelCase } from 'lodash-es'
 * @description Concatenates words or phrases in a way that each word or abbreviation in the middle of the phrase
 * begins with a capital letter. No spaces or punctuation is used.
 *
-* @param {string} value
+* @param {string} value The string to be concatenated to Camel Case.
 * @return {string} Returns the value concatenated to Camel Case.
+*
+* @implem js
 *
 * @example camel_case(camel_case)
 * @example <caption>Example usage of camel_case function.</caption>
 *
-* @example camel_case("Camel Case Example")
-* @example returns CamelCaseExample
+* // returns CamelCaseExample
+* camel_case("Camel Case Example")
+*
 */
 
 
