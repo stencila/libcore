@@ -19,9 +19,9 @@ import is_array from './is_array'
 *
 * @example append(array, element)
 * @example <caption>Example usage of append function.</caption>
+* // returns [1, 3, 6, "hello"]
+* append([1, 3, 6], "hello")
 *
-* @example append([1, 3, 6], "hello")
-* @example returns [1, 3, 6, "hello"]
 */
 
 export default function append(value, other) {
