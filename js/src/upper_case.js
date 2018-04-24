@@ -16,7 +16,7 @@ import { upperCase } from 'lodash-es'
 * @example <caption>Example usage of upper_case function.</caption>
 *
 * // returns UPPER CASE
-* lower_case("lower case")
+* upper_case("upper case")
 *
 */
 
