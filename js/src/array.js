@@ -20,14 +20,15 @@ import is_table from './is_table'
 * @example array(value)
 * @example <caption>Example usage of array function.</caption>
 *
-* @example array( "hello")
-* @example returns ["hello"]
+* // returns ["hello"]
+* array( "hello")
 *
-* @example array([1,2,3])
-* @example returns [1,2,3]
+* // returns [1,2,3]
+* array([1,2,3])
 *
-* @example array( table({a: [1, 2, 3], b: ['1', '2', '3']} )
-* @example returns [{ a: 1, b: '1' }, { a: 2, b: '2' }, { a: 3, b: '3' }]
+* // returns [{ a: 1, b: '1' }, { a: 2, b: '2' }, { a: 3, b: '3' }]
+* array( table({a: [1, 2, 3], b: ['1', '2', '3']} )
+*
 */
 
 export default function array(value) {
