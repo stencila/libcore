@@ -16,11 +16,14 @@ import table from './table'
 * @param {any} extension The extension to be added to the value.
 * @return {array|object|table} The extended value.
 *
+* @implem js
+*
 * @example extend(value, extension)
 * @example <caption>Example usage of extend function.</caption>
 *
-* @example extend([1], [2, 3])
-* @example returns [1, 2, 3]
+* // returns [1, 2, 3]
+* extend([1], [2, 3])
+*
 */
 
 
