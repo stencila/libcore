@@ -10,11 +10,14 @@ import { cloneDeep } from 'lodash-es'
 * @param {any} value The value to clone.
 * @return {any} Returns exact (recursive) clone of the value.
 *
+* @implem js
+*
 * @example clone(condition, message)
 * @example <caption>Example usage of clone function.</caption>
 *
-* @example clone([{ 'a': 1 }, { 'b': 2 }])
-* @example returns [{ 'a': 1 }, { 'b': 2 }]
+* // returns [{ 'a': 1 }, { 'b': 2 }]
+* clone([{ 'a': 1 }, { 'b': 2 }])
+*
 */
 
 
