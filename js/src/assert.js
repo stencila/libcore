@@ -12,9 +12,9 @@
 *
 * @example assert(condition, message)
 * @example <caption>Example usage of assert function.</caption>
+* // returns True
+* assert((1 === 1, "one should equal one")
 *
-* @example assert((1 === 1, "one should equal one")
-* @example returns true
 */
 
 
