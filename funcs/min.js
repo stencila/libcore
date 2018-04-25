@@ -18,6 +18,6 @@ import { _wrap_array_number } from './_helpers'
 *
 */
 
-export default function min(value) {
+export default function min (value) {
   return _wrap_array_number(jStat.min, value)
 }

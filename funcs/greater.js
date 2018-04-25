@@ -17,6 +17,6 @@
 *
 */
 
-export default function greater(value, other) {
+export default function greater (value, other) {
   return value > other
 }

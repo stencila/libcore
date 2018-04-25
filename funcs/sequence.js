@@ -24,7 +24,6 @@ import { range } from 'lodash-es'
 * @author Nokome Bentley
 */
 
-
 export default function sequence (begin, end, step = 1) {
   assert(is_number(begin), 'parameter `begin` must be a number')
   assert(is_number(end), 'parameter `end` must be a number')

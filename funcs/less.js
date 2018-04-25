@@ -17,6 +17,6 @@
 *
 */
 
-export default function less(value, other) {
+export default function less (value, other) {
   return value < other
 }

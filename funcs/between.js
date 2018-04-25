@@ -1,6 +1,5 @@
 import { default as stdlib } from '@stdlib/stdlib'
 
-
 /**
 * @title between
 * @summary Check if given value is within range.
@@ -20,7 +19,6 @@ import { default as stdlib } from '@stdlib/stdlib'
 * // returns True
 * between(2,1,5)
 */
-
 
 export default function between (value, upper, lower) {
   return stdlib.assert.isBetween(value, upper, lower)

@@ -26,8 +26,7 @@ import table from './table'
 *
 */
 
-
-export default function extend(value, extensions) {
+export default function extend (value, extensions) {
   if (is_array(value)) return _extend_array(value, extensions)
   else if (is_table(value)) return _extend_table(value, extensions)
   else if (is_object(value)) return _extend_object(value, extensions)
@@ -44,9 +43,9 @@ function _extend_object (value, extensions) {
   assert(is_object(extensions), 'parameter `extensions` must be an object')
 
   let extended = clone(value)
-  Object.keys(extensions).forEach(function(name) {
+  Object.keys(extensions).forEach(function (name) {
     let extension = extensions[name]
-    let extender = new Function('object', `with(object) { return ${extension} }`)
+    let extender = new Function('object', `with(object) { return ${extension} }`) // eslint-disable-line no-new-func
     extended[name] = extender(extended)
   })
   return extended
@@ -56,10 +55,10 @@ function _extend_table (value, extensions) {
   assert(is_object(extensions), 'parameter `extensions` must be an object')
 
   let objects = array(value)
-  Object.keys(extensions).forEach(function(name) {
+  Object.keys(extensions).forEach(function (name) {
     let extension = extensions[name]
-    let extender = new Function('object', `with(object) { return ${extension} }`)
-    objects.forEach(function(object) {
+    let extender = new Function('object', `with(object) { return ${extension} }`) // eslint-disable-line no-new-func
+    objects.forEach(function (object) {
       object[name] = extender(object)
     })
   })

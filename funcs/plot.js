@@ -6,7 +6,6 @@ import sequence from './sequence'
 import table from './table'
 import title_case from './title_case'
 
-
 /**
 * @title plot
 * @name plot
@@ -33,25 +32,24 @@ export default function plot (arg1, arg2, ...args) {
   else if (is_array(arg1)) {
     if (is_array(arg2)) return _plot_array_array(arg1, arg2, ...args)
     else return _plot_array(arg1, arg2, ...args)
-  }
-  else throw new Error('Must be called with a table as the first argument or two arrays as the first two arguments')
+  } else throw new Error('Must be called with a table as the first argument or two arrays as the first two arguments')
 }
 
-function _plot_array(y, ...args) {
+function _plot_array (y, ...args) {
   return _plot_table(table({
     x: sequence(1, length(y)),
     y: y
   }), ...args)
 }
 
-function _plot_array_array(x, y, ...args) {
+function _plot_array_array (x, y, ...args) {
   return _plot_table(table({
     x: x,
     y: y
   }), ...args)
 }
 
-function _plot_table(table, x, y, options = {}) {
+function _plot_table (table, x, y, options = {}) {
   const columns = Object.keys(table.data)
 
   if (!x) {

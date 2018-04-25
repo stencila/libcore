@@ -1,6 +1,5 @@
 import { default as stdlib } from '@stdlib/stdlib'
 
-
 /**
 * @title is_boolean
 * @name is_boolean

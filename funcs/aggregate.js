@@ -42,8 +42,7 @@ import table from './table'
 * aggregate(table1, 'region',{min_v1:'min(group.v1)', sum_v2:'sum(group.v2)' } )
 */
 
-
-export default function aggregate(value, by, summaries) {
+export default function aggregate (value, by, summaries) {
   if (is_array(value)) return _aggregate_array(value, by, summaries)
   else if (is_table(value)) return _aggregate_table(value, by, summaries)
   else throw new Error('parameter `value` must be an array or a table')
@@ -55,7 +54,7 @@ function _aggregate_array (value, by, summaries) {
   assert(is_object(summaries), 'parameter `summaries` must be an object')
 
   let groups = {}
-  value.forEach(function(item, index) {
+  value.forEach(function (item, index) {
     const group = by[index]
     if (groups[group]) groups[group].push(item)
     else groups[group] = [item]
@@ -63,12 +62,12 @@ function _aggregate_array (value, by, summaries) {
   let aggregated = {
     group: Object.keys(groups)
   }
-  Object.keys(summaries).forEach(function(summary) {
+  Object.keys(summaries).forEach(function (summary) {
     // It is not possible to use a Function here because it does not
     // use the module's scope as a closure so does not have access to summary
     // functions like `min`, `mean`, `sum` etc
     // let summariser = new Function('values', `return ${summaries[summary]}`)
-    let summariser = function(values) { return eval(summaries[summary]) }
+    let summariser = function (values) { return eval(summaries[summary]) } // eslint-disable-line no-eval
     aggregated[summary] = Object.keys(groups).map(group => summariser(groups[group]))
   })
   return table(aggregated)
@@ -82,7 +81,7 @@ function _aggregate_table (value, by, summaries) {
   let groups = {}
   for (let row = 0; row < value.rows; row++) {
     let group = []
-    by.forEach(function(name) {
+    by.forEach(function (name) {
       let grouper = value.data[name]
       if (typeof grouper === 'undefined') throw new Error(`table does not have column '${name}'`)
       group.push(grouper[row])
@@ -97,19 +96,19 @@ function _aggregate_table (value, by, summaries) {
     }
   }
   let aggregated = {}
-  by.forEach(function(name) {
+  by.forEach(function (name) {
     aggregated[name] = []
   })
-  Object.keys(summaries).forEach(function(summary) {
+  Object.keys(summaries).forEach(function (summary) {
     aggregated[summary] = []
   })
-  Object.keys(groups).forEach(function(key) {
+  Object.keys(groups).forEach(function (key) {
     let group = groups[key]
-    by.forEach(function(name) {
+    by.forEach(function (name) {
       aggregated[name].push(group[name][0])
     })
-    Object.keys(summaries).forEach(function(summary) {
-      let summariser = function(group) { return eval(summaries[summary]) }
+    Object.keys(summaries).forEach(function (summary) {
+      let summariser = function (group) { return eval(summaries[summary]) } // eslint-disable-line no-eval
       aggregated[summary].push(summariser(group))
     })
   })

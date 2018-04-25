@@ -2,7 +2,6 @@ import { default as stdlib } from '@stdlib/stdlib'
 
 import mean from './mean'
 
-
 /**
 * @title Student's t-Test
 * @summary One-sample and paired Student's t-Test on arrays of numbers.
@@ -26,13 +25,12 @@ import mean from './mean'
 *
 */
 
-
-export default function t_test(x, y, mu, tails, paired, alpha) {
+export default function t_test (x, y, mu, tails, paired, alpha) {
   const implem = stdlib.math.stats.ttest
   const options = {
     mu: mu || 0,
     alternative: ['less', 'two-sided', 'greater'][(tails || 0) + 1],
-    alpha: alpha || 0.05,
+    alpha: alpha || 0.05
   }
   let result
   if (paired) result = implem(x, y, options)

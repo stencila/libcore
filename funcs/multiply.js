@@ -26,7 +26,7 @@ import is_number from './is_number'
 * @author Nokome Bentley
 */
 
-export default function multiply(value, other) {
+export default function multiply (value, other) {
   assert(is_number(value), 'parameter `value` must be a number')
   assert(is_number(other), 'parameter `other` must be a number')
   return value * other

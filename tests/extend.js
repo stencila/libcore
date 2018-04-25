@@ -9,7 +9,6 @@ test('extend', function (t) {
   t.deepEqual(extend({a: 2}, {b: 3, c: 'a * b'}), {a: 2, b: 3, c: 6})
   t.throws(() => extend({}, 'foo'), /parameter `extensions` must be an object/)
 
-  
   const table1 = table({
     a: [1, 2, 3],
     b: [4, 5, 6]

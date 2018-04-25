@@ -1,8 +1,8 @@
 import tape from 'tape'
 import t_test from '../funcs/t_test.js'
 
-const x = [0,1,2,3,4,5,6,7,8,9]
-const y = [9,8,7,6,5,4,3,2,1,0]
+const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+const y = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 
 tape('t_test', function (t) {
   const unpaired = t_test(x, y)

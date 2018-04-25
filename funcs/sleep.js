@@ -1,7 +1,6 @@
 import assert from './assert'
 import is_number from './is_number'
 
-
 /**
 * @title sleep
 * @name sleep
@@ -26,8 +25,7 @@ import is_number from './is_number'
 *
 */
 
-
-export default function sleep(seconds) {
+export default function sleep (seconds) {
   assert(is_number(seconds), 'parameter `seconds` must be a number')
 
   const start = new Date().getTime()

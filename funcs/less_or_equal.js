@@ -16,6 +16,6 @@
 * less_or_equal(1,2)
 */
 
-export default function less_or_equal(value, other) {
+export default function less_or_equal (value, other) {
   return value <= other
 }

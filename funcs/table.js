@@ -27,12 +27,12 @@ import is_table from './is_table'
 
 export default function table (value) {
   if (is_table(value)) return value
-  else if (is_array(value, "object")) return _table_array_object(value)
+  else if (is_array(value, 'object')) return _table_array_object(value)
   else if (is_object(value)) return _table_object(value)
   else throw new Error('parameter `value` must be an array of objects or an object of arrays')
 }
 
-function _table_array_object(array) {
+function _table_array_object (array) {
   let data = {}
   let rows = array.length
   let fields = Object.keys(array[0])
@@ -55,7 +55,7 @@ function _table_array_object(array) {
   }
 }
 
-function _table_object(object) {
+function _table_object (object) {
   let names = Object.keys(object)
   let columns = names.length
   let rows = null

@@ -1,7 +1,6 @@
 import is_array from './is_array'
 import is_table from './is_table'
 
-
 /**
 * @title array
 * @name array
@@ -31,7 +30,7 @@ import is_table from './is_table'
 *
 */
 
-export default function array(value) {
+export default function array (value) {
   if (is_array(value)) return value
   else if (is_table(value)) return _array_table(value)
   else return [value]

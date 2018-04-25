@@ -20,7 +20,6 @@ import { upperCase } from 'lodash-es'
 *
 */
 
-
 export default function upper_case (value) {
   assert(is_string(value), 'parameter `value` must be a string')
 

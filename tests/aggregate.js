@@ -27,7 +27,7 @@ test('aggregate', function (t) {
     v2: [1, 1, 1, 1, 1, 1, 1, 1, 1]
   })
   t.deepEqual(
-    aggregate(table1, 'region',{
+    aggregate(table1, 'region', {
       min_v1: 'min(group.v1)',
       sum_v2: 'sum(group.v2)'
     }),
@@ -45,7 +45,7 @@ test('aggregate', function (t) {
     v1: [1, 2, 3, 4, 5, 6, 7, 8, 9]
   })
   t.deepEqual(
-    aggregate(table2, ['g1', 'g2'],{
+    aggregate(table2, ['g1', 'g2'], {
       sum: 'sum(group.v1)'
     }),
     table({

@@ -23,6 +23,6 @@ import { _wrap_array_number } from './_helpers'
 * @author Nokome Bentley
 */
 
-export default function sum(value) {
+export default function sum (value) {
   return _wrap_array_number(jStat.sum, value)
 }

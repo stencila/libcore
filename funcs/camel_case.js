@@ -2,7 +2,6 @@ import assert from './assert'
 import is_string from './is_string'
 import { camelCase } from 'lodash-es'
 
-
 /**
 * @title camel_case
 * @name camel_case
@@ -23,8 +22,6 @@ import { camelCase } from 'lodash-es'
 * camel_case("Camel Case Example")
 *
 */
-
-
 
 export default function camel_case (value) {
   assert(is_string(value), 'parameter `value` must be a string')

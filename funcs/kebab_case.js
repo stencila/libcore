@@ -22,7 +22,6 @@ import { kebabCase } from 'lodash-es'
 *
 */
 
-
 export default function kebab_case (value) {
   assert(is_string(value), 'parameter `value` must be a string')
 

@@ -7,8 +7,6 @@ import is_string from './is_string'
 import is_table from './is_table'
 import type from './type'
 
-
-
 /**
 * @title add
 * @name add
@@ -34,7 +32,7 @@ import type from './type'
 * add([1,2], [3,4])
 */
 
-export default function add(value, other) {
+export default function add (value, other) {
   if (is_number(value) && is_number(other)) return value + other
   if (is_string(value) && is_string(other)) return value + other
   if (is_array(value)) return append(value, other)

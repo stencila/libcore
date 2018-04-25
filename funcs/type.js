@@ -22,8 +22,6 @@
 * type(A1:D5)
 */
 
-
-
 export default function type (value) {
   let type = typeof value
 

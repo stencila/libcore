@@ -20,7 +20,6 @@ import { lowerCase } from 'lodash-es'
 *
 */
 
-
 export default function lower_case (value) {
   assert(is_string(value), 'parameter `value` must be a string')
 

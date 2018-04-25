@@ -40,9 +40,7 @@ import length from './length'
 *
 */
 
-
-
-export default function select(value, items) {
+export default function select (value, items) {
   if (is_array(value)) return _select_array(value, items)
   else if (is_table(value)) return _select_table(value, items)
   else if (is_object(value)) return _select_object(value, items)

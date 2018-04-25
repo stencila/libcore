@@ -27,8 +27,7 @@ import table from './table'
 *
 */
 
-
-export default function filter(value, clause) {
+export default function filter (value, clause) {
   if (is_array(value)) return _filter_array(value, clause)
   else if (is_table(value)) return _filter_table(value, clause)
   else if (is_object(value)) return _filter_object(value, clause)
@@ -36,16 +35,16 @@ export default function filter(value, clause) {
 }
 
 function _filter_array (value, clause) {
-  let matcher = new Function('index', 'value', `return ${clause}`)
+  let matcher = new Function('index', 'value', `return ${clause}`) // eslint-disable-line no-new-func
   let matched = []
   value.forEach((value, index) => {
-    if (matcher(index+1, value)) matched.push(value)
+    if (matcher(index + 1, value)) matched.push(value)
   })
   return matched
 }
 
 function _filter_object (value, clause) {
-  let matcher = new Function('name', 'value', `return ${clause}`)
+  let matcher = new Function('name', 'value', `return ${clause}`) // eslint-disable-line no-new-func
   let matched = {}
   Object.keys(value).forEach(name => {
     if (matcher(name, value[name])) matched[name] = value[name]
@@ -54,10 +53,10 @@ function _filter_object (value, clause) {
 }
 
 function _filter_table (value, clause) {
-  let matcher = new Function('row', 'object', `with(object) { return ${clause} }`)
+  let matcher = new Function('row', 'object', `with(object) { return ${clause} }`) // eslint-disable-line no-new-func
   let matched = []
   array(value).forEach((object, row) => {
-    if (matcher(row+1, object)) matched.push(object)
+    if (matcher(row + 1, object)) matched.push(object)
   })
   return table(matched)
 }
