@@ -2,7 +2,7 @@ import test from 'tape'
 import aggregate from '../funcs/aggregate.js'
 import table from '../funcs/table.js'
 
-test('aggregate', function (t) {
+test.skip('aggregate', function (t) {
   // Aggregate an array using another grouping array
   t.deepEqual(
     aggregate(
