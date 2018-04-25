@@ -26,9 +26,9 @@
     "tape": "^4.9.0"
   },
   "dependencies": {
-    "@stdlib/stdlib": "0.0.26",
-    "jstat": "^1.7.0",
-    "lodash-es": "^4.17.4"
+    "@stdlib/stdlib": "0.0.36",
+    "jstat": "1.7.1",
+    "lodash": "4.17.10"
   },
   "scripts": {
     "lint": "eslint funcs tests",
