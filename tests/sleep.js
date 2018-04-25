@@ -7,7 +7,7 @@ test('sleep', function (t) {
   const finish = new Date().getTime()
 
   t.equal(result, 0.1)
-  t.equal((100-Math.abs(finish-start))/100.0 < 0.01, 'slept for within 1% of expected')
+  t.ok((100-Math.abs(finish-start))/100.0 < 0.01, 'slept for within 1% of expected')
 
   t.end()
 })
