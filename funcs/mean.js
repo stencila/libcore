@@ -1,4 +1,5 @@
-import { default as jStat } from 'jstat'
+import jStat from 'jstat'
+
 import { _wrap_array_number } from './_helpers'
 
 /**
