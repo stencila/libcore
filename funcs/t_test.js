@@ -1,4 +1,4 @@
-import { default as stdlib } from '@stdlib/stdlib'
+import stdlib from '@stdlib/stdlib'
 
 import mean from './mean'
 
@@ -26,7 +26,7 @@ import mean from './mean'
 */
 
 export default function t_test (x, y, mu, tails, paired, alpha) {
-  const implem = stdlib.math.stats.ttest
+  const implem = stdlib.stats.ttest
   const options = {
     mu: mu || 0,
     alternative: ['less', 'two-sided', 'greater'][(tails || 0) + 1],

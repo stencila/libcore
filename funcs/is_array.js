@@ -1,4 +1,4 @@
-import { default as stdlib } from '@stdlib/stdlib'
+import stdlib from '@stdlib/stdlib'
 
 import assert from './assert'
 import is_string from './is_string'
