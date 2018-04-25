@@ -1,6 +1,7 @@
+import { camelCase } from 'lodash'
+
 import assert from './assert'
 import is_string from './is_string'
-import { camelCase } from 'lodash-es'
 
 /**
 * @title camel_case

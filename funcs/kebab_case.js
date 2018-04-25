@@ -1,6 +1,7 @@
+import { kebabCase } from 'lodash'
+
 import assert from './assert'
 import is_string from './is_string'
-import { kebabCase } from 'lodash-es'
 
 /**
 * @title kebab_case

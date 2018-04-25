@@ -1,6 +1,7 @@
+import { startCase } from 'lodash'
+
 import assert from './assert'
 import is_string from './is_string'
-import { startCase } from 'lodash-es'
 
 /**
 * @title title_case

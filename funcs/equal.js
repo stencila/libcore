@@ -1,4 +1,5 @@
-import { isEqual } from 'lodash-es'
+import { isEqual } from 'lodash'
+
 import type from './type'
 
 /**

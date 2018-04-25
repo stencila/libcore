@@ -1,6 +1,7 @@
+import { upperCase } from 'lodash'
+
 import assert from './assert'
 import is_string from './is_string'
-import { upperCase } from 'lodash-es'
 
 /**
 * @title upper_case

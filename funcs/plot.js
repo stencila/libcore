@@ -1,7 +1,8 @@
+import { merge } from 'lodash'
+
 import is_array from './is_array'
 import is_table from './is_table'
 import length from './length'
-import { merge } from 'lodash-es'
 import sequence from './sequence'
 import table from './table'
 import title_case from './title_case'

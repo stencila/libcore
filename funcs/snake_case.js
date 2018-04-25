@@ -1,6 +1,7 @@
+import { snakeCase } from 'lodash'
+
 import assert from './assert'
 import is_string from './is_string'
-import { snakeCase } from 'lodash-es'
 
 /**
 * @title snake_case

@@ -1,13 +1,14 @@
+import { range } from 'lodash'
+
 import assert from './assert'
 import is_number from './is_number'
-import { range } from 'lodash-es'
 
 /**
 * @title sequence
 * @name sequence
 * @summary Creates a range to step through.
 *
-* @description Creates a range (from "lodash-es" library). As per the lodash-es documentation:
+* @description Creates a range (from "lodash" library). As per the lodash documentation:
 * "Creates an array of numbers (positive and/or negative) progressing from start up to the end. A step of -1 is used if a negative start is specified without an end or step. If end is not specified, it's set to start with start then set to 0."
 *
 * @param {number} begin The beginning of the range.
