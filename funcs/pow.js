@@ -2,8 +2,7 @@ import assert from './assert'
 import is_number from './is_number'
 
 /**
-* @title power
-* @name power
+* @title Power
 * @summary Raise the value to the given power.
 *
 * @description

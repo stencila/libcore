@@ -11,7 +11,7 @@ import type from './type'
 * Performs a deep comparison between two values to determine if they are equivalent.
 *
 * @param {number} value The value to be compared.
-* @param {number} lower The value compared to.
+* @param {number} other The value compared to.
 * @return {boolean} True if the values are equivalent, else false.
 *
 * @implem js

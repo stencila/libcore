@@ -11,8 +11,8 @@ import is_array from './is_array'
 *
 * Appends the element to the array and returns the new array, with the appended item.
 *
-* @param {array} array The array.
-* @param {any} element The element to be appended.
+* @param {array} value The array.
+* @param {any} other The element to be appended.
 * @return {array} The array with appended element.
 *
 * @implem js

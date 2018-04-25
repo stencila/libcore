@@ -7,7 +7,7 @@
 *
 *
 * @param {boolean} condition
-* @param {string} eror
+* @param {string} message
 * @return {boolean} If the condition is met, returns true. Otherwise, throws an error..
 *
 * @example assert(condition, message)

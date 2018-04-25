@@ -24,14 +24,14 @@ import length from './length'
 * `select(table, ['column1', 'column2'])`.
 *
 * @param {array|object|table} value The value to select values from.
-* @param {any} members The members to select from the value.
-* @return  {any} The members of the value
+* @param {any} items The items to select from the value.
+* @return  {any} The items of the value
 *
 * @implem js
 *
 * @author Nokome Bentley
 *
-* @example select(value, members)
+* @example select(value, items)
 * @example <caption>Example usage of select function.</caption>
 * @example select([2,1,5], 1)
 * @example returns 2

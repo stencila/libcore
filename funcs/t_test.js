@@ -4,9 +4,8 @@ import mean from './mean'
 
 
 /**
-* @title t_test
-* @name t_test
-* @summary Student's t-Test. One-sample and paired Student's t-Test on arrays of numbers.
+* @title Student's t-Test
+* @summary One-sample and paired Student's t-Test on arrays of numbers.
 *
 *
 * @param {array[number]} x The value to be checked.
@@ -15,7 +14,7 @@ import mean from './mean'
 * @param {number} tails Whether the alternative hypothesis is that the mean of x (or difference between x and y) is larger than mu (1, i.e. "one-sided greater than"), smaller than mu (-1, i.e. "one-sided less than") or equal to mu (0, i.e. "two-sided").
 * @param {boolean} paired Perform a paired t-test?. Default value is 'false'.
 * @param {number} alpha Number in the interval [0,1] giving the significance level of the hypothesis test. Default value is 0.5
-* @returns {object} An object of class "ttest"
+* @returns {object} An object of type "ttest"
 *
 * @implem js
 * @implem r
@@ -42,7 +41,7 @@ export default function ttest(x, y, mu, tails, paired, alpha) {
     else result = implem(x, options)
   }
   return {
-    _class: 'ttest',
+    type: 'ttest',
     mean: result.mean,
     sd: result.sd,
     statistic: result.statistic,

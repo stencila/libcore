@@ -13,7 +13,7 @@ import table from './table'
 *
 *
 * @param {array|object|table} value The value to be extended.
-* @param {any} extension The extension to be added to the value.
+* @param {any} extensions The extension to be added to the value.
 * @return {array|object|table} The extended value.
 *
 * @implem js

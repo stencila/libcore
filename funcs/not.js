@@ -3,7 +3,6 @@ import is_boolean from './is_boolean'
 
 
 /**
-* @name Not
 * @title Not
 * @summary Logically invert an expression. (Logical negation)
 *

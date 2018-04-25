@@ -4,15 +4,14 @@ import is_array from './is_array'
 
 /**
 * @title prepend
-* @name prepend
 * @summary Prepends an element to the array.
 *
 * @description
 *
 * Prepends the element to the array and returns the new array, with the prepended item.
 *
-* @param {array} array The array.
-* @param {any} element The element to be prepended.
+* @param {array} value The array.
+* @param {any} other The element to be prepended.
 * @return {array} The array with prepended element.
 *
 * @implem js

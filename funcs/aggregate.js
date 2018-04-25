@@ -80,7 +80,7 @@ function _aggregate_table (value, by, summaries) {
   by = array(by)
 
   let groups = {}
-  for (let row = 0; row < value.rows; row**) {
+  for (let row = 0; row < value.rows; row++) {
     let group = []
     by.forEach(function(name) {
       let grouper = value.data[name]
