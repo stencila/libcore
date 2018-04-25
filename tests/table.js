@@ -1,5 +1,5 @@
 import test from 'tape'
-import table from '../src/table.js'
+import table from '../funcs/table.js'
 
 test('table', function (t) {
   t.deepEqual(table([

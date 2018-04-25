@@ -1,5 +1,5 @@
 import test from 'tape'
-import pow from '../src/pow.js'
+import pow from '../funcs/pow.js'
 
 test('pow', function (t) {
   t.equal(pow(1, 1), 1)

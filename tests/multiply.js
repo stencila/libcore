@@ -1,5 +1,5 @@
 import test from 'tape'
-import multiply from '../src/multiply.js'
+import multiply from '../funcs/multiply.js'
 
 test('multiply', function (t) {
   t.equal(multiply(1, 1), 1)

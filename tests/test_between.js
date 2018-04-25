@@ -1,5 +1,5 @@
 import tape from 'tape'
-import test_between from '../src/test_between.js'
+import test_between from '../funcs/test_between.js'
 
 tape('test_between', function (t) {
   const test1 = test_between(5, 0, 10)

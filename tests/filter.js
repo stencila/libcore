@@ -1,6 +1,6 @@
 import test from 'tape'
-import filter from '../src/filter.js'
-import table from '../src/table.js'
+import filter from '../funcs/filter.js'
+import table from '../funcs/table.js'
 
 test('filter', function (t) {
   t.deepEqual(filter(['a', 'b', 'c'], 'index == 2 || value == "c"'), ['b', 'c'])

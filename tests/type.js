@@ -1,5 +1,5 @@
 import { default as tape } from 'tape'
-import { default as type } from '../src/type.js'
+import { default as type } from '../funcs/type.js'
 
 tape('type', function (assert) {
   assert.equal(type(null), 'null')

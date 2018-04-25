@@ -1,6 +1,6 @@
 import test from 'tape'
-import length from '../src/length.js'
-import table from '../src/table.js'
+import length from '../funcs/length.js'
+import table from '../funcs/table.js'
 
 test('length', function (t) {
   t.equal(length(42), 1)

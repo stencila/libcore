@@ -1,5 +1,5 @@
 import tape from 'tape'
-import test_close from '../src/test_close.js'
+import test_close from '../funcs/test_close.js'
 
 tape('test_close', function (t) {
   const test1 = test_close(5, 5, 0.1)

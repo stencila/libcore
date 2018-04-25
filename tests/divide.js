@@ -1,5 +1,5 @@
 import test from 'tape'
-import divide from '../src/divide.js'
+import divide from '../funcs/divide.js'
 
 test('divide', function (t) {
   t.equal(divide(1, 1), 1)

@@ -1,5 +1,5 @@
 import tape from 'tape'
-import test_equal from '../src/test_equal.js'
+import test_equal from '../funcs/test_equal.js'
 
 tape('test_equal', function (t) {
   const test1 = test_equal('foo', 'foo')

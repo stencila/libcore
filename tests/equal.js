@@ -1,5 +1,5 @@
 import test from 'tape'
-import equal from '../src/equal.js'
+import equal from '../funcs/equal.js'
 
 test('equal', function (t) {
   t.equal(equal(true, true), true)

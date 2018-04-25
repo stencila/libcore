@@ -1,5 +1,5 @@
 import test from 'tape'
-import between from '../src/between'
+import between from '../funcs/between'
 
 test('between', function (t) {
   t.ok(between(5, 0, 10))

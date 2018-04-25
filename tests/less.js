@@ -1,5 +1,5 @@
 import test from 'tape'
-import less from '../src/less.js'
+import less from '../funcs/less.js'
 
 test('less', function (t) {
   t.equal(less(1, 2), true)

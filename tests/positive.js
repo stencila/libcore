@@ -1,5 +1,5 @@
 import test from 'tape'
-import positive from '../src/positive.js'
+import positive from '../funcs/positive.js'
 
 test('positive', function (t) {
   t.equal(positive(1), 1)

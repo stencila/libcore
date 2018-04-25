@@ -1,6 +1,6 @@
 import test from 'tape'
-import aggregate from '../src/aggregate.js'
-import table from '../src/table.js'
+import aggregate from '../funcs/aggregate.js'
+import table from '../funcs/table.js'
 
 test('aggregate', function (t) {
   // Aggregate an array using another grouping array

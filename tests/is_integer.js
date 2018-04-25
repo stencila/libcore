@@ -1,5 +1,5 @@
 import test from 'tape'
-import is_integer from '../src/is_integer.js'
+import is_integer from '../funcs/is_integer.js'
 
 test('is_integer', function (t) {
   t.equal(is_integer(1), true)

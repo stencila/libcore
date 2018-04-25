@@ -1,5 +1,5 @@
 import test from 'tape'
-import or from '../src/or.js'
+import or from '../funcs/or.js'
 
 test('or', function (t) {
   t.equal(or(true, true), true)

@@ -1,5 +1,5 @@
 import test from 'tape'
-import greater_or_equal from '../src/greater_or_equal.js'
+import greater_or_equal from '../funcs/greater_or_equal.js'
 
 test('greater_or_equal', function (t) {
   t.equal(greater_or_equal(1, 2), false)

@@ -1,5 +1,5 @@
 import test from 'tape'
-import and from '../src/and.js'
+import and from '../funcs/and.js'
 
 test('and', function (t) {
   t.equal(and(true, true), true)

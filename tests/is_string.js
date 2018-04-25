@@ -1,5 +1,5 @@
 import test from 'tape'
-import is_string from '../src/is_string.js'
+import is_string from '../funcs/is_string.js'
 
 test('is_string', function (t) {
   t.equal(is_string("foo"), true)

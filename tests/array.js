@@ -1,6 +1,6 @@
 import test from 'tape'
-import array from '../src/array.js'
-import table from '../src/table.js'
+import array from '../funcs/array.js'
+import table from '../funcs/table.js'
 
 test('array', function (t) {
   t.deepEqual(array('foo'), ['foo'])

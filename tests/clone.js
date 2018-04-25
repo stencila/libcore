@@ -1,6 +1,6 @@
 import test from 'tape'
-import clone from '../src/clone.js'
-import table from '../src/table.js'
+import clone from '../funcs/clone.js'
+import table from '../funcs/table.js'
 
 test('clone', function (t) {
   t.equal(clone(true), true)

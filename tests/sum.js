@@ -1,5 +1,5 @@
 import test from 'tape'
-import sum from '../src/sum.js'
+import sum from '../funcs/sum.js'
 
 test('sum', function (t) {
   t.equal(sum([1.2]), 1.2)

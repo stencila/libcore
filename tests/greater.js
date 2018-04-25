@@ -1,5 +1,5 @@
 import test from 'tape'
-import greater from '../src/greater.js'
+import greater from '../funcs/greater.js'
 
 test('greater', function (t) {
   t.equal(greater(1, 2), false)

@@ -1,5 +1,5 @@
 import test from 'tape'
-import close from '../src/close'
+import close from '../funcs/close'
 
 test('close', function (t) {
   t.ok(close(5, 5, 0))

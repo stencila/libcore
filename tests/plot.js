@@ -1,7 +1,7 @@
 import tape from 'tape'
-import clone from '../src/clone'
-import plot from '../src/plot'
-import table from '../src/table'
+import clone from '../funcs/clone'
+import plot from '../funcs/plot'
+import table from '../funcs/table'
 
 
 const x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]

@@ -1,5 +1,5 @@
 import test from 'tape'
-import is_boolean from '../src/is_boolean.js'
+import is_boolean from '../funcs/is_boolean.js'
 
 test('is_boolean', function (t) {
   t.equal(is_boolean(true), true)

@@ -1,5 +1,5 @@
 import test from 'tape'
-import not from '../src/not.js'
+import not from '../funcs/not.js'
 
 test('not', function (t) {
   t.equal(not(false), true)

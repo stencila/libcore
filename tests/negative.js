@@ -1,5 +1,5 @@
 import test from 'tape'
-import negative from '../src/negative.js'
+import negative from '../funcs/negative.js'
 
 test('negative', function (t) {
   t.equal(negative(1), -1)

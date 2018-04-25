@@ -1,6 +1,6 @@
 import test from 'tape'
-import select from '../src/select.js'
-import table from '../src/table.js'
+import select from '../funcs/select.js'
+import table from '../funcs/table.js'
 
 test('select', function (t) {
   t.deepEqual(select(['a', 'b', 'c'], 1), 'a')

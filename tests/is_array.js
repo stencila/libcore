@@ -1,5 +1,5 @@
 import test from 'tape'
-import is_array from '../src/is_array.js'
+import is_array from '../funcs/is_array.js'
 
 test('is_array', function (t) {
   t.equal(is_array([]), true)

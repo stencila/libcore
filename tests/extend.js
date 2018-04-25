@@ -1,6 +1,6 @@
 import test from 'tape'
-import extend from '../src/extend.js'
-import table from '../src/table.js'
+import extend from '../funcs/extend.js'
+import table from '../funcs/table.js'
 
 test('extend', function (t) {
   t.deepEqual(extend([1], [2, 3]), [1, 2, 3])

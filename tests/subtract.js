@@ -1,5 +1,5 @@
 import test from 'tape'
-import subtract from '../src/subtract.js'
+import subtract from '../funcs/subtract.js'
 
 test('subtract', function (t) {
   t.equal(subtract(12, 5), 7)

@@ -1,5 +1,5 @@
 import test from 'tape'
-import add from '../src/add.js'
+import add from '../funcs/add.js'
 
 test('add', function (t) {
   t.equal(add(12, 5), 17)

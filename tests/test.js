@@ -1,5 +1,5 @@
 import tape from 'tape'
-import test from '../src/test.js'
+import test from '../funcs/test.js'
 
 tape('test', function (t) {
   const test1 = test(true)

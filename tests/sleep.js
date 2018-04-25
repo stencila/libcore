@@ -1,5 +1,5 @@
 import test from 'tape'
-import sleep from '../src/sleep.js'
+import sleep from '../funcs/sleep.js'
 
 test('sleep', function (t) {
   const start = new Date().getTime()

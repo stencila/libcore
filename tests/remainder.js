@@ -1,5 +1,5 @@
 import test from 'tape'
-import remainder from '../src/remainder.js'
+import remainder from '../funcs/remainder.js'
 
 test('remainder', function (t) {
   t.equal(remainder(12, 5), 2)
