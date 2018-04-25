@@ -1,7 +1,7 @@
 import { default as stdlib } from '@stdlib/stdlib'
 
-import assert from '../src/assert'
-import is_string from '../src/is_string'
+import assert from './assert'
+import is_string from './is_string'
 
 
 /**

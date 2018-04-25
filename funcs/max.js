@@ -1,5 +1,5 @@
 import { default as jStat } from 'jstat'
-import { _wrap_array_number } from '../src/_helpers'
+import { _wrap_array_number } from './_helpers'
 
 /**
 * @title max
