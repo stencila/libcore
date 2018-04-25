@@ -27,7 +27,7 @@ import mean from './mean'
 */
 
 
-export default function ttest(x, y, mu, tails, paired, alpha) {
+export default function t_test(x, y, mu, tails, paired, alpha) {
   const implem = stdlib.math.stats.ttest
   const options = {
     mu: mu || 0,
@@ -41,7 +41,7 @@ export default function ttest(x, y, mu, tails, paired, alpha) {
     else result = implem(x, options)
   }
   return {
-    type: 'ttest',
+    type: 't_test',
     mean: result.mean,
     sd: result.sd,
     statistic: result.statistic,
