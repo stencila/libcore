@@ -1,6 +1,4 @@
-build
-node_modules
-tmp
-
-*.sublime-*
-.Rproj.user
+/.nyc_output
+/builds
+/coverage
+/node_modules

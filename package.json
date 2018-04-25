@@ -11,20 +11,19 @@
     "url": "https://github.com/stencila/libcore/issues"
   },
   "homepage": "https://github.com/stencila/libcore#readme",
-  "main": "build/stencila-libcore.cjs.js",
-  "jsnext:main": "src/index.js",
+  "main": "build/stencila-libcore.min.js",
   "devDependencies": {
-    "browserify": "^14.5.0",
-    "concat-files": "^0.1.1",
-    "istanbul": "^0.4.5",
-    "plotly.js": "^1.31.1",
-    "source-map-support": "^0.4.18",
-    "stencila-convert": "0.1.2",
-    "stencila-docket": "^1.0.3",
-    "substance": "^1.0.0-beta.7-preview.11",
-    "substance-bundler": "^0.18.5",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "esm": "^3.0.25",
+    "nyc": "^11.7.1",
+    "stencila-node": "^0.28.5",
     "tap-spec": "^4.1.1",
-    "tape": "^4.8.0"
+    "tape": "^4.9.0"
   },
   "dependencies": {
     "@stdlib/stdlib": "0.0.26",
@@ -32,11 +31,20 @@
     "lodash-es": "^4.17.4"
   },
   "scripts": {
-    "prepare": "node make",
-    "build": "node make",
-    "test": "node make test",
-    "test-browser": "node make test:browser",
-    "docs-upgrade": "stencila-docket upgrade ../docs \"Stencila Libcore\"",
-    "docs-serve": "stencila-docket serve ../docs"
+    "lint": "eslint funcs tests",
+    "test": "tape -r esm tests/*.js | tap-spec",
+    "cover": "nyc --reporter=lcov --reporter=text npm test",
+    "build": "stencila-node compile '{\"dest\":\"builds/stencila-libcore.min.js\"}'"
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "rules": {
+      "camelcase": 0
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "tests"
+    ]
   }
 }
