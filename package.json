@@ -13,13 +13,15 @@
   "homepage": "https://github.com/stencila/libcore#readme",
   "main": "build/stencila-libcore.min.js",
   "devDependencies": {
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.1.0",
-    "esm": "^3.0.25",
     "nyc": "^11.7.1",
     "stencila-node": "^0.28.5",
     "tap-spec": "^4.1.1",
@@ -32,9 +34,21 @@
   },
   "scripts": {
     "lint": "eslint funcs tests",
-    "test": "tape -r esm tests/*.js | tap-spec",
-    "cover": "nyc --reporter=lcov --reporter=text npm test",
+    "test": "tape --require babel-register tests/*.js | tap-spec",
+    "cover": "nyc npm test",
     "build": "stencila-node compile '{\"dest\":\"builds/stencila-libcore.min.js\"}'"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
   },
   "eslintConfig": {
     "extends": "standard",
@@ -43,6 +57,13 @@
     }
   },
   "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
     "exclude": [
       "tests"
     ]
