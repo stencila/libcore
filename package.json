@@ -1,0 +1,83 @@
+{
+  "name": "stencila-libcore",
+  "version": "0.2.8",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stencila/libcore.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/stencila/libcore/issues"
+  },
+  "homepage": "https://github.com/stencila/libcore#readme",
+  "main": "build/stencila-libcore.min.js",
+  "devDependencies": {
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "nyc": "^11.7.1",
+    "stencila-node": "^0.28.5",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.9.0"
+  },
+  "dependencies": {
+    "@stdlib/stdlib": "0.0.36",
+    "jstat": "1.7.1",
+    "lodash": "4.17.10"
+  },
+  "scripts": {
+    "lint": "eslint funcs tests",
+    "test": "tape --require babel-register tests/*.js | tap-spec",
+    "cover": "nyc npm test",
+    "build": "stencila-node compile '{\"dest\":\"builds/stencila-libcore.min.js\"}'"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "rules": {
+      "camelcase": 0
+    }
+  },
+  "rollup": {
+    "external": [
+      "@stdlib/stdlib",
+      "jstat",
+      "lodash"
+    ],
+    "globals" : {
+      "@stdlib/stdlib": "stdlib",
+      "jstat": "jStat",
+      "lodash": "lodash"
+    }
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "exclude": [
+      "tests"
+    ]
+  }
+}

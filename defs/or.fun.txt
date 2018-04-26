@@ -1,7 +1,0 @@
-@name or
-
-@param {any} value
-@param {any} other
-@return {any}
-
-@implem js
