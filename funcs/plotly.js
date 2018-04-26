@@ -1,4 +1,4 @@
-import { merge } from 'lodash-es'
+import { merge } from 'lodash'
 
 import is_array from './is_array'
 
@@ -15,7 +15,6 @@ export default function plotly (traces, layout) {
   if (!is_array(traces)) traces = [traces]
   layout = layout || {}
 
-  
   layout.xaxis = layout.xaxis || {}
   layout.yaxis = layout.yaxis || {}
   const axisSettings = {
