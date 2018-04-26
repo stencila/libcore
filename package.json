@@ -56,6 +56,18 @@
       "camelcase": 0
     }
   },
+  "rollup": {
+    "external": [
+      "@stdlib/stdlib",
+      "jstat",
+      "lodash"
+    ],
+    "globals" : {
+      "@stdlib/stdlib": "stdlib",
+      "jstat": "jStat",
+      "lodash": "lodash"
+    }
+  },
   "nyc": {
     "require": [
       "babel-register"
