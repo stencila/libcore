@@ -58,5 +58,12 @@ function _filter_table (value, clause) {
   array(value).forEach((object, row) => {
     if (matcher(row + 1, object)) matched.push(object)
   })
-  return table(matched)
+  if (matched.length) return table(matched)
+  else {
+    const columns = {}
+    for (let name of Object.keys(value.data)) {
+      columns[name] = []
+    }
+    return table(columns)
+  }
 }
