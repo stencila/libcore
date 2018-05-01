@@ -12,6 +12,7 @@
       <p>Functions:</p>
       <ul id="funs"></ul>
       <script type="text/javascript">
+        let core = window.stencilaLibcore.funcs
         let ul = document.getElementById('funs')
         Object.keys(core).forEach(function (fun) {
           let li = document.createElement('li')

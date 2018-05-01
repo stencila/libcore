@@ -1,0 +1,5 @@
+/.nyc_output
+/builds
+!/builds/*.js
+/coverage
+/node_modules
