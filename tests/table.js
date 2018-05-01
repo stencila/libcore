@@ -16,10 +16,10 @@ test('table', function (t) {
     rows: 3
   })
 
-  t.deepEqual(table(table({
+  t.deepEqual(table({
     a: [1, 2, 3],
     b: ['1', '2', '3']
-  })), {
+  }), {
     type: 'table',
     data: {
       a: [1, 2, 3],

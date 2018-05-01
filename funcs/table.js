@@ -21,8 +21,6 @@ import is_table from './is_table'
 * @example <caption>Example usage of table function.</caption>
 * // returns {type: 'table', data: {a: [1, 2, 3], b: ['1', '2', '3']}, columns: 2, rows: 3}
 * table({ a: 1, b: '1' },{ a: 2, b: '2' },{ a: 3, b: '3' })
-*
-* @author Nokome Bentley
 */
 
 export default function table (value) {
