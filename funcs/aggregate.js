@@ -34,7 +34,7 @@ import table from './table'
 * sum_v2: [2, 2, 4, 1]})
 *
 * @example
-* // @const table1 = table({
+* table1 = table({
 * region: ['N', 'N', 'S', 'S', 'W', 'W', 'W', 'W', 'E'],
 * v1: [1, 2, 3, 4, 5, 6, 7, 8, 9],
 * v2: [1, 1, 1, 1, 1, 1, 1, 1, 1]

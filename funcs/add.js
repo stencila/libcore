@@ -8,8 +8,6 @@ import is_table from './is_table'
 import type from './type'
 
 /**
-* @title add
-* @name add
 * @summary Addition of two values.
 *
 * @description
@@ -22,11 +20,10 @@ import type from './type'
 * @param {number|string|array|table|object} other The other value.
 * @returns {number|string|array|table|object} Result of addition.
 *
-* @implem js
-*
-* @example <caption>Example usage of add function.</caption>
+* @example
 * // returns 6
 * add(2, 4)
+*
 * @example
 * // returns [1, 2, 3, 4]
 * add([1,2], [3,4])

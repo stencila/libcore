@@ -3,9 +3,7 @@ import { isEqual } from 'lodash'
 import type from './type'
 
 /**
-* @title equal
-* @name equal
-* @summary Are two values equal?.
+* @summary Are two values equal?
 *
 * @description
 *
@@ -15,13 +13,9 @@ import type from './type'
 * @param {number} other The value compared to.
 * @return {boolean} True if the values are equivalent, else false.
 *
-* @implem js
-*
-* @example equal(value, other)
-* @example <caption>Example usage of equal function.</caption>
-* //returns True
-* equal(1,1)
-*
+* @example
+* // returns true
+* equal(1, 1)
 */
 
 export default function equal (value, other) {
