@@ -1,29 +1,25 @@
-import jStat from 'jstat'
+import is_number from './is_number'
 
-import { _wrap_array_number } from './_helpers'
+import _reduce from './_reduce'
 
 /**
-* @title sum
-* @name sum
 * @summary Sum of numbers
 *
 * @description
 *
-* Sum of numbers. Uses jStat.sum.
+* Sum of numbers.
 *
-* @param {array[number]} values An array of numbers to sum.
+* @param {...any} values Numbers to sum.
 * @return {number} The sum of the numbers.
 *
-* @implem js
-*
-* @example sum(value)
-* @example <caption>Example usage of sum function.</caption>
+* @example
 * // returns 6
-* sum([1,2,3,])
+* sum([1, 2, 3])
 *
-* @author Nokome Bentley
+* @example
+* // returns 6
+* sum(1, 2, 3)
 */
-
-export default function sum (value) {
-  return _wrap_array_number(jStat.sum, value)
+export default function sum (...values) {
+  return _reduce(0, (accumulator, value) => accumulator + value, is_number, ...values)
 }

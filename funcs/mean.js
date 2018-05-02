@@ -1,23 +1,25 @@
-import jStat from 'jstat'
+import is_number from './is_number'
 
-import { _wrap_array_number } from './_helpers'
+import _reduce from './_reduce'
 
 /**
-* @title mean
-* @summary Calculate arithmetic mean. Uses jStat.mean
+* @summary Calculate arithmetic mean
 *
-* @param {array[numbers]} value The array of numbers to have arithmetic mean calculated.
+* @param {...any} value The array of numbers to have arithmetic mean calculated.
 * @return {number} The calculated mean.
 *
-* @implem js
-*
-* @example mean(value)
-* @example <caption>Example usage of mean function.</caption>
-* // return 2;
-* mean([1 ,2, 3])
-*
+* @example
+* // returns 2
+* mean([1, 2, 3])
 */
-
-export default function mean (value) {
-  return _wrap_array_number(jStat.mean, value)
+export default function mean (...values) {
+  let acc = _reduce({
+    sum: 0,
+    n: 0
+  }, (accumulator, value) => {
+    accumulator.sum += value
+    accumulator.n += 1
+    return accumulator
+  }, is_number, ...values)
+  return acc.sum / acc.n
 }
