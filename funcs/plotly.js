@@ -8,6 +8,21 @@ import is_array from './is_array'
   It is merely bringing the input data into an appropriate
   format and returns an object that is rendered by the PlotlyValueComponent.
 */
+/**
+* @title plotly
+* @name plotly
+* @summary Creates a Plotly plot.
+*
+* @description Returns graph data that can is rendered by a Plotly based
+* renderer.
+*
+* @param {object[]} traces one ore more trace specifications.
+* @param {object} layout a Plotly layout specification.
+* @returns {object} The Plotly graph data.
+*
+* @implem js
+*
+*/
 export default function plotly (traces, layout) {
   // TODO: make it convenient to use this function using transclusions
 
