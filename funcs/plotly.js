@@ -13,14 +13,15 @@ import is_array from './is_array'
 * @name plotly
 * @summary Creates a Plotly plot.
 *
-* @description Returns graph data that can is rendered by a Plotly based
-* renderer.
+* @description Returns graph data that can be rendered by a Plotly
+* renderer. See the Plotly [documentation](https://plot.ly/javascript/) for
+* more details on the options for traces and layout.
 *
-* @param {object[]} traces one ore more trace specifications.
-* @param {object} layout a Plotly layout specification.
+* @param {object[]} traces One or more trace specifications.
+* @param {object} layout A Plotly layout specification.
 * @returns {object} The Plotly graph data.
 *
-* @implem js
+* @example plotly({x: ['giraffes', 'orangutans', 'monkeys'], y: [20, 14, 23]})
 *
 */
 export default function plotly (traces, layout) {
